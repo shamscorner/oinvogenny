@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../app.css';
+	import Icon from '@iconify/svelte';
 	import ThemeSwitch from '$lib/components/ThemeSwitch.svelte';
 	import DropDown from '$lib/components/DropDown.svelte';
 	import { locale, locales, saveLang } from '$lib/i18n';
@@ -15,6 +16,15 @@
 	<header
 		class="flex items-center gap-5 justify-end max-w-2xl mx-auto mt-4"
 	>
+		<a href="/" class="mr-auto">
+			<Icon
+				icon="mdi-light:home"
+				width="28"
+				height="28"
+				aria-hidden="true"
+				class="ml-1 text-gray-400"
+			/>
+		</a>
 		<ThemeSwitch />
 		<DropDown value={$locale}>
 			{#each locales as l}
