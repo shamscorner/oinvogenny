@@ -3,5 +3,7 @@
 	import ThemeSwitch from '$lib/global/ThemeSwitch.svelte';
 </script>
 
-<ThemeSwitch />
-<slot />
+<div class="h-screen overflow-y-auto pb-16">
+	<ThemeSwitch />
+	<slot />
+</div>

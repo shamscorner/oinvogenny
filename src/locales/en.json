@@ -1,5 +1,23 @@
 {
 	"homepage.title": "Hello, World!",
 	"homepage.welcome": "Hi <strong>{{name}}</strong>, how are you?",
-	"homepage.time": "The current time is: {{time}}"
+	"homepage.time": "The current time is: {{time}}",
+
+	"page-title.generate": "Generate Invoice",
+	"page-meta.description.generate": "Generate & print invoices according to the specified work log & unit.",
+
+	"upload-logo": "Upload Logo",
+	"invoice": "Invoice",
+	"submitted-on": "Submitted on {{date}}",
+	"invoice-for": "Invoice for",
+	"invoice-from": "Invoice from",
+	"due-date": "Due date",
+	"note": "Note",
+	"table.head.description": "Description",
+	"table.head.qty": "Qty ({{quantity}})",
+	"table.head.unit-price": "Unit Price (/{{unit}})",
+	"table.head.total-price": "Total Price",
+	"table.body.subtotal": "Subtotal",
+	"table.body.adjustments": "Adjustments",
+	"table.body.total": "Total"
 }
