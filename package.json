@@ -2,6 +2,8 @@
 	"name": "oinvogenny",
 	"version": "0.0.1",
 	"private": true,
+	"license": "GPL-3.0",
+	"author": "Shamim Hossain ('https://shamscorner.com')",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
