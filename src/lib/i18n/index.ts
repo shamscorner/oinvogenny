@@ -2,10 +2,17 @@ import { derived, writable } from 'svelte/store';
 import type { LocaleType } from './translations';
 import { translations } from './translations';
 
-export const locale = writable<LocaleType>('en');
+export const locale = writable<LocaleType>(
+	(localStorage.getItem('lang') || 'en') as LocaleType
+);
 export const locales = Object.keys(
 	translations
 ) as LocaleType[];
+
+export function saveLang(lang: LocaleType) {
+	document.documentElement.setAttribute('lang', lang);
+	localStorage.setItem('lang', lang);
+}
 
 function translate(
 	locale: LocaleType,
