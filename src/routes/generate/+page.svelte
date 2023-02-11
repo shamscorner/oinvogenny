@@ -13,7 +13,7 @@
 
 <div class="px-4 sm:px-6">
 	<div
-		class="mx-auto mt-8 max-w-2xl rounded-lg bg-white p-4 text-gray-500 shadow-lg sm:p-6"
+		class="mx-auto mt-8 max-w-2xl rounded-lg bg-white dark:bg-gray-800 p-4 text-gray-500 dark:text-gray-400 shadow-lg sm:p-6"
 	>
 		<header class="flex justify-between">
 			<section class="text-xs">
@@ -26,7 +26,7 @@
 			</section>
 
 			<section
-				class="grid h-24 w-24 place-items-center rounded-full bg-gray-100"
+				class="grid h-24 w-24 place-items-center rounded-full bg-gray-100 dark:bg-gray-700"
 			>
 				<img
 					src={UploadIcon}
@@ -51,7 +51,7 @@
 				>
 					<div class="space-y-1">
 						<h3
-							class="mb-1 text-base font-semibold text-gray-600"
+							class="mb-1 text-base font-semibold text-gray-600 dark:text-gray-300"
 						>
 							{$t('invoice-for')}
 						</h3>
@@ -63,7 +63,7 @@
 
 					<div class="space-y-1">
 						<h3
-							class="mb-1 text-base font-semibold text-gray-600"
+							class="mb-1 text-base font-semibold text-gray-600 dark:text-gray-300"
 						>
 							{$t('invoice-from')}
 						</h3>
@@ -76,7 +76,7 @@
 					<div>
 						<div>
 							<h3
-								class="mb-1 text-base font-semibold text-gray-600"
+								class="mb-1 text-base font-semibold text-gray-600 dark:text-gray-300"
 							>
 								{$t('invoice')} #
 							</h3>
@@ -84,7 +84,7 @@
 						</div>
 						<div class="mt-4">
 							<h3
-								class="mb-1 text-base font-semibold text-gray-600"
+								class="mb-1 text-base font-semibold text-gray-600 dark:text-gray-300"
 							>
 								{$t('due-date')}
 							</h3>
@@ -97,7 +97,9 @@
 			<hr class="my-5" />
 
 			<section>
-				<p class="mt-2 text-sm text-gray-700">
+				<p
+					class="mt-2 text-sm text-gray-700 dark:text-gray-300"
+				>
 					For work completed from
 					<time datetime="2022-08-01" class="text-pink-500">
 						August 1, 2022
@@ -222,13 +224,13 @@
 								<th
 									scope="row"
 									colspan="3"
-									class="hidden pl-6 pr-3 pt-2 text-right text-sm font-semibold text-gray-900 sm:table-cell md:pl-0"
+									class="hidden pl-6 pr-3 pt-2 text-right text-sm font-semibold text-gray-900 dark:text-gray-300 sm:table-cell md:pl-0"
 								>
 									{$t('table.body.total')}
 								</th>
 								<th
 									scope="row"
-									class="pl-4 pr-3 pt-2 text-left text-sm font-semibold text-gray-900 sm:hidden"
+									class="pl-4 pr-3 pt-2 text-left text-sm font-semibold text-gray-900 dark:text-gray-300 sm:hidden"
 								>
 									{$t('table.body.total')}
 								</th>
@@ -245,7 +247,9 @@
 		</main>
 
 		<footer class="mt-4">
-			<h3 class="text-sm text-gray-500">{$t('note')}:</h3>
+			<h3 class="text-sm text-gray-500 dark:text-gray-300">
+				{$t('note')}:
+			</h3>
 			<p class="mt-1 text-xs text-gray-400">
 				The Toggl Track software is used to record the work
 				hours & can be sent if necessary. With this, I
