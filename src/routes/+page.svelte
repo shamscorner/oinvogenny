@@ -10,7 +10,7 @@
 </select>
 
 <h1 class="mt-4 h-5 pt-4 pb-6 text-3xl font-bold underline">
-	{$t('homepage.title')}
+	{$t('invoice')}
 </h1>
 
 <Icon icon="mdi-light:home" width="100" height="100" />

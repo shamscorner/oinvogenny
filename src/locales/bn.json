@@ -1,0 +1,19 @@
+{
+	"page-title.generate": "ইনভইচ তৈরি করুন",
+	"page-meta.description.generate": "আপনার দেয়া বর্ণনার উপর ভিত্তি করে ইনভইচ তৈরি করুন",
+
+	"upload-logo": "লোগো আপলোড করুন",
+	"invoice": "ইনভইচ",
+	"submitted-on": "পাঠানো হয়েছে {{date}}",
+	"invoice-for": "প্রাপক",
+	"invoice-from": "প্রেরক",
+	"due-date": "দিন বাকি",
+	"note": "বিঃদ্রঃ",
+	"table.head.description": "বর্ণনা",
+	"table.head.qty": "পরিমাণ ({{quantity}})",
+	"table.head.unit-price": "গণনা (/{{unit}})",
+	"table.head.total-price": "মোট দাম",
+	"table.body.subtotal": "আপাতত মোট",
+	"table.body.adjustments": "অন্যান্য",
+	"table.body.total": "সর্বমোট"
+}

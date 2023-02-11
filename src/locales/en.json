@@ -1,8 +1,4 @@
 {
-	"homepage.title": "Hello, World!",
-	"homepage.welcome": "Hi <strong>{{name}}</strong>, how are you?",
-	"homepage.time": "The current time is: {{time}}",
-
 	"page-title.generate": "Generate Invoice",
 	"page-meta.description.generate": "Generate & print invoices according to the specified work log & unit.",
 

@@ -1,12 +1,12 @@
 import en from '../../locales/en.json';
-import es from '../../locales/es.json';
+import bn from '../../locales/bn.json';
 
-export type LocaleType = 'en' | 'es';
+export type LocaleType = 'en' | 'bn';
 
 export const translations: Record<
 	LocaleType,
 	Record<string, string>
 > = {
 	en,
-	es
+	bn
 };
