@@ -1,23 +1,15 @@
 <script lang="ts">
-	import { t, locale, locales, saveLang } from '$lib/i18n';
-	import Icon from '@iconify/svelte';
-
-	function setAndSaveLocalLang() {
-		saveLang($locale);
-	}
+	import { t } from '$lib/i18n';
 </script>
 
-<select
-	bind:value={$locale}
-	on:change={setAndSaveLocalLang}
->
-	{#each locales as l}
-		<option value={l}>{l}</option>
-	{/each}
-</select>
-
-<h1 class="mt-4 h-5 pt-4 pb-6 text-3xl font-bold underline">
-	{$t('invoice')}
-</h1>
-
-<Icon icon="mdi-light:home" width="100" height="100" />
+<div class="h-96 flex flex-col justify-center items-center">
+	<h1 class="text-3xl">
+		{$t('welcome')}
+	</h1>
+	<a
+		href="/generate"
+		class="mt-8 text-lg text-pink-500 border border-pink-400 px-3 py-1 block rounded-md"
+	>
+		{$t('generate')}
+	</a>
+</div>

@@ -2,6 +2,9 @@
 	"page-title.generate": "Generate Invoice",
 	"page-meta.description.generate": "Generate & print invoices according to the specified work log & unit.",
 
+	"welcome": "Welcome to the easiest invoice generator app!",
+	"generate": "Generate",
+	"change-theme": "Change Theme",
 	"upload-logo": "Upload Logo",
 	"invoice": "Invoice",
 	"submitted-on": "Submitted on {{date}}",

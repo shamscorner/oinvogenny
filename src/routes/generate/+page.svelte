@@ -94,7 +94,7 @@
 				</div>
 			</section>
 
-			<hr class="my-5" />
+			<hr class="my-5 dark:border-gray-600" />
 
 			<section>
 				<p
@@ -114,7 +114,7 @@
 					class="-mx-4 mt-4 flex flex-col sm:-mx-6 md:mx-0"
 				>
 					<table
-						class="min-w-full divide-y divide-gray-300"
+						class="min-w-full divide-y divide-gray-300 dark:divide-gray-600"
 					>
 						<thead>
 							<tr>
@@ -149,7 +149,9 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="border-b border-gray-200">
+							<tr
+								class="border-b border-gray-200 dark:border-gray-600"
+							>
 								<td
 									class="py-4 pl-4 pr-3 text-xs sm:pl-6 md:pl-0"
 								>
