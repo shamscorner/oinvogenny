@@ -140,9 +140,21 @@
 	</svelte:fragment>
 
 	<svelte:fragment slot="submitted-on">
-		<h2 class="text-lg font-semibold text-pink-500">
-			{$t('submitted-on', { date: '1/30/2023' })}
-		</h2>
+		<div class="flex items-center gap-4">
+			<label
+				for="submitted-on"
+				class="text-lg font-semibold text-pink-500 flex-shrink-0"
+			>
+				{$t('submitted-on', { date: '' })}
+			</label>
+			<input
+				bind:value={formData.submittedOn}
+				type="date"
+				name="submitted-on"
+				id="submitted-on"
+				class="rounded-md max-w-[180px]"
+			/>
+		</div>
 	</svelte:fragment>
 
 	<svelte:fragment slot="invoice-for">
@@ -295,16 +307,54 @@
 	</svelte:fragment>
 
 	<svelte:fragment slot="due-date">
-		<p>2/3/2023</p>
+		<div>
+			<label for="due-date" class="sr-only">
+				{$t('due-date')}
+			</label>
+			<input
+				bind:value={formData.dueDate}
+				type="date"
+				name="due-date"
+				id="due-date"
+				class="rounded-md"
+			/>
+		</div>
 	</svelte:fragment>
 
 	<svelte:fragment slot="work-date-for">
-		<p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
-			{$t('work-for-date')}
-			<time datetime="2022-08-01" class="text-pink-500"> August 1, 2022 </time>
-			-
-			<time datetime="2022-08-31" class="text-pink-500"> August 31, 2022 </time>
-		</p>
+		<div class="flex flex-col sm:flex-row items-center gap-4">
+			<p class="text-sm text-gray-500 dark:text-gray-300">
+				{$t('work-for-date')}
+			</p>
+
+			<div>
+				<label for="work-from-date" class="sr-only">
+					{$t('date-from')}
+				</label>
+				<input
+					bind:value={formData.workDateInterval.fromDate}
+					type="date"
+					name="work-from-date"
+					id="work-from-date"
+					class="rounded-md max-w-[180px]"
+				/>
+			</div>
+
+			<div>-</div>
+
+			<div>
+				<label for="work-to-date" class="sr-only">
+					{$t('date-to')}
+				</label>
+				<input
+					bind:value={formData.workDateInterval.toDate}
+					type="date"
+					name="work-to-date"
+					id="work-to-date"
+					class="rounded-md max-w-[180px]"
+				/>
+			</div>
+		</div>
 	</svelte:fragment>
 
 	<svelte:fragment slot="table-row">
@@ -324,8 +374,34 @@
 							placeholder={$t('form.service-item.description')}
 						/>
 					</div>
-					<!-- TODO: work on it -->
-					<div class="mt-0.5 sm:hidden">12.0 hours at $75.00</div>
+					<!-- small screen only -->
+					<div class="mt-4 sm:hidden flex gap-4">
+						<div class="flex flex-col items-end">
+							<label for="item-quantity" class="sr-only">
+								{$t('form.service-item.quantity')}
+							</label>
+							<input
+								bind:value={item.quantity}
+								type="number"
+								name="item-quantity"
+								id="item-quantity"
+								class="max-w-[100px] rounded-md text-right"
+								placeholder={$t('form.service-item.quantity')}
+								min="0"
+							/>
+						</div>
+						<CurrencyValueInput
+							bind:value={item.unitPrice}
+							name="item-unit-price"
+							id="item-unit-price"
+							placeholder={$t('form.service-item.unit-price')}
+							classes="flex flex-col items-end"
+						>
+							<svelte:fragment slot="label">
+								{$t('form.service-item.unit-price')}
+							</svelte:fragment>
+						</CurrencyValueInput>
+					</div>
 				</td>
 				<td class="hidden py-4 px-3 text-right text-sm sm:table-cell">
 					<div class="flex flex-col items-end">
@@ -356,7 +432,9 @@
 						</svelte:fragment>
 					</CurrencyValueInput>
 				</td>
-				<td class="py-4 pl-3 pr-4 text-right text-sm sm:pr-6 md:pr-0">
+				<td
+					class="py-4 pl-3 pr-4 text-right text-sm sm:pr-6 md:pr-0 align-bottom sm:align-middle"
+				>
 					${(+item.quantity * +item.unitPrice).toFixed(2)}
 				</td>
 			</tr>

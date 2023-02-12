@@ -16,6 +16,8 @@
 	"due-date": "দিন বাকি",
 	"note": "বিঃদ্রঃ",
 	"work-for-date": "কাজ শেষ হয়েছে",
+	"date-from": "শুরুর তারিখ",
+	"date-to": "শেষ তারিখ",
 	"table.head.description": "বর্ণনা",
 	"table.head.qty": "পরিমাণ ({{quantity}})",
 	"table.head.unit-price": "গণনা (/{{unit}})",

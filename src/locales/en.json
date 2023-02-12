@@ -16,6 +16,8 @@
 	"due-date": "Due date",
 	"note": "Note",
 	"work-for-date": "Work completed for",
+	"date-from": "Date from",
+	"date-to": "Date to",
 	"table.head.description": "Description",
 	"table.head.qty": "Qty ({{quantity}})",
 	"table.head.unit-price": "Unit Price (/{{unit}})",

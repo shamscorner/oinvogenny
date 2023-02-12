@@ -7,7 +7,7 @@
 	<div
 		class="mx-auto mt-6 max-w-2xl rounded-lg bg-white p-4 text-gray-500 shadow-lg dark:bg-gray-800 dark:text-gray-400 print:bg-white print:text-gray-500 print:shadow-none sm:p-6"
 	>
-		<header class="flex justify-between">
+		<header class="flex flex-col-reverse sm:flex-row justify-between gap-4">
 			<section class="text-xs">
 				<slot name="company-info" />
 			</section>
@@ -26,7 +26,9 @@
 				</h1>
 				<slot name="submitted-on" />
 
-				<div class="mt-3 grid grid-cols-1 gap-4 text-xs xs:grid-cols-3">
+				<div
+					class="mt-3 grid grid-cols-1 gap-4 text-xs xs:grid-cols-2 sm:grid-cols-3"
+				>
 					<div class="space-y-1">
 						<h3
 							class="mb-1 text-base font-semibold text-gray-600 dark:text-gray-300"
