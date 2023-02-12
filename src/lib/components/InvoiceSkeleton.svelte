@@ -1,5 +1,5 @@
 <script lang="ts">
-	import UploadIcon from '$lib/assets/upload-icon.svg';
+	// import UploadIcon from '$lib/assets/upload-icon.svg';
 	import { t } from '$lib/i18n';
 </script>
 
@@ -12,11 +12,12 @@
 				<slot name="company-info" />
 			</section>
 
-			<section
+			<!-- TODO: add image upload feature later -->
+			<!-- <section
 				class="grid h-24 w-24 place-items-center rounded-full bg-gray-100 dark:bg-gray-700"
 			>
 				<img src={UploadIcon} alt={$t('upload-logo')} width="96" height="96" />
-			</section>
+			</section> -->
 		</header>
 
 		<main class="mt-3">

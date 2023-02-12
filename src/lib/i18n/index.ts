@@ -1,6 +1,5 @@
 import { derived, writable } from 'svelte/store';
-import type { LocaleType } from './translations';
-import { translations } from './translations';
+import { translations, type LocaleType } from './translations';
 
 export const locale = writable<LocaleType>(
 	(localStorage.getItem('lang') || 'en') as LocaleType

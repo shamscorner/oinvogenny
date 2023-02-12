@@ -6,14 +6,17 @@
 	import { scrollToTop } from '$lib/helpers';
 	import { onMount } from 'svelte';
 	import { t } from '$lib/i18n';
+	import type { InvoiceDataType } from '$lib/types';
+	import { initIndexDB, type IndexedDBSchemaType } from '$lib/indexDB';
+	import type { IDBPDatabase } from 'idb';
+	import { InvoiceDataIdxDBKey } from '$lib/constants';
 
-	onMount(() => {
-		scrollToTop();
-	});
+	let idxDB: IDBPDatabase<IndexedDBSchemaType> | undefined;
 
-	const formData = {
+	let formData: InvoiceDataType = {
 		yourCompanyInfo: {
 			companyName: '',
+			name: '',
 			city: '',
 			postalCode: '',
 			country: ''
@@ -48,6 +51,20 @@
 		note: ''
 	};
 
+	onMount(async () => {
+		scrollToTop();
+
+		idxDB = await initIndexDB();
+		if (!idxDB) return;
+
+		const existingData = await idxDB
+			.transaction('invoiceData', 'readonly')
+			.store.get(InvoiceDataIdxDBKey);
+		if (!existingData) return;
+
+		formData = existingData;
+	});
+
 	$: subTotal = formData.items.reduce(
 		(acc, item) => acc + +item.quantity * +item.unitPrice,
 		0
@@ -55,7 +72,20 @@
 
 	$: total = subTotal + +formData.adjustments;
 
-	function addNewItem() {
+	$: {
+		let timer;
+		(() => {
+			clearTimeout(timer);
+			timer = setTimeout(async () => {
+				if (!idxDB) return;
+
+				const idxDBTransaction = idxDB.transaction('invoiceData', 'readwrite');
+				idxDBTransaction.store.put(formData, InvoiceDataIdxDBKey);
+			}, 3000);
+		})();
+	}
+
+	async function addNewItem() {
 		formData.items = [
 			...formData.items,
 			{
@@ -101,6 +131,19 @@
 						class="rounded-none rounded-t-md font-semibold"
 						placeholder={$t('form.your-company-name')}
 						autocomplete="organization"
+					/>
+				</div>
+				<div>
+					<label for="your-name" class="sr-only">
+						{$t('form.your-name')}
+					</label>
+					<input
+						bind:value={formData.yourCompanyInfo.name}
+						type="text"
+						name="your-name"
+						id="your-name"
+						placeholder={$t('form.your-name')}
+						autocomplete="name"
 					/>
 				</div>
 				<div class="flex -space-x-px">

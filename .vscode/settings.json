@@ -5,5 +5,5 @@
 		"editor.defaultFormatter": "svelte.svelte-vscode"
 	},
 	"eslint.validate": ["javascript", "typescript", "svelte"],
-	"cSpell.words": ["oinvogenny"]
+	"cSpell.words": ["iconify", "IDBP", "oinvogenny"]
 }
