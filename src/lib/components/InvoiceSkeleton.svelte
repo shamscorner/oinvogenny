@@ -1,12 +1,6 @@
 <script lang="ts">
-	import ButtonPrimary from '$lib/components/buttons/ButtonPrimary.svelte';
-	// import ButtonSecondary from '$lib/components/buttons/ButtonSecondary.svelte';
 	import UploadIcon from '$lib/assets/upload-icon.svg';
 	import { t } from '$lib/i18n';
-
-	function printInvoice() {
-		window.print();
-	}
 </script>
 
 <div class="px-4 sm:px-6 print:px-0">
@@ -200,15 +194,5 @@
 		</footer>
 	</div>
 
-	<section
-		class="flex items-center justify-center gap-5 mt-8 print:hidden"
-	>
-		<ButtonPrimary on:click={printInvoice}>
-			{$t('print')}
-		</ButtonPrimary>
-
-		<!-- <ButtonSecondary>
-			{$t('download')}
-		</ButtonSecondary> -->
-	</section>
+	<slot />
 </div>

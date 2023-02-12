@@ -1,6 +1,14 @@
 <script lang="ts">
 	import InvoiceSkeleton from '$lib/components/InvoiceSkeleton.svelte';
+	import LinkPrimary from '$lib/components/links/LinkPrimary.svelte';
+	import Icon from '@iconify/svelte';
+	import { scrollToTop } from '$lib/helpers';
+	import { onMount } from 'svelte';
 	import { t } from '$lib/i18n';
+
+	onMount(() => {
+		scrollToTop();
+	});
 </script>
 
 <svelte:head>
@@ -112,4 +120,17 @@
 			validated.
 		</p>
 	</svelte:fragment>
+
+	<section class="text-center mt-8">
+		<LinkPrimary href="/preview">
+			{$t('preview')}
+			<Icon
+				icon="mdi-light:chevron-double-right"
+				width="20"
+				height="20"
+				aria-hidden="true"
+				class="ml-1"
+			/>
+		</LinkPrimary>
+	</section>
 </InvoiceSkeleton>

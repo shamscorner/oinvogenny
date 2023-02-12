@@ -1,6 +1,19 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import InvoiceSkeleton from '$lib/components/InvoiceSkeleton.svelte';
+	import ButtonPrimary from '$lib/components/buttons/ButtonPrimary.svelte';
+	import LinkSecondary from '$lib/components/links/LinkSecondary.svelte';
+	import { scrollToTop } from '$lib/helpers';
+	import Icon from '@iconify/svelte';
 	import { t } from '$lib/i18n';
+
+	function printInvoice() {
+		window.print();
+	}
+
+	onMount(() => {
+		scrollToTop();
+	});
 </script>
 
 <svelte:head>
@@ -112,4 +125,22 @@
 			validated.
 		</p>
 	</svelte:fragment>
+
+	<section
+		class="flex items-center justify-center gap-5 mt-8 print:hidden"
+	>
+		<LinkSecondary href="/generate">
+			<Icon
+				icon="mdi-light:chevron-double-left"
+				width="20"
+				height="20"
+				aria-hidden="true"
+				class="mr-2"
+			/>
+			{$t('edit')}
+		</LinkSecondary>
+		<ButtonPrimary on:click={printInvoice}>
+			{$t('print')}
+		</ButtonPrimary>
+	</section>
 </InvoiceSkeleton>
