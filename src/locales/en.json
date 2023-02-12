@@ -24,5 +24,14 @@
 	"table.body.adjustments": "Adjustments",
 	"table.body.total": "Total",
 	"print": "Print",
-	"edit": "Edit"
+	"edit": "Edit",
+
+	"form.your-company-info": "Your company information",
+	"form.your-company-name": "Your company name",
+	"form.your-company-city": "City",
+	"form.your-company-city.sr-only": "Your company city",
+	"form.your-company-postal-code": "Postal Code",
+	"form.your-company-postal-code.sr-only": "Your company Postal Code",
+	"form.your-company-country": "Country",
+	"form.your-company-country.sr-only": "Your country of origin"
 }

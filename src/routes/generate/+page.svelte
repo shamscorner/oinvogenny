@@ -21,12 +21,71 @@
 
 <InvoiceSkeleton>
 	<svelte:fragment slot="company-info">
-		<p class="mb-1 text-xl font-semibold">
-			shamscorner.com
-		</p>
-		<p>Shamim Hossain</p>
-		<p>Rajshahi, 6560</p>
-		<p>Bangladesh</p>
+		<fieldset>
+			<legend class="sr-only">
+				{$t('form.your-company-name')}
+			</legend>
+			<div
+				class="mt-1 -space-y-px rounded-md bg-white dark:bg-gray-800 shadow-sm"
+			>
+				<div>
+					<label for="company-name" class="sr-only">
+						{$t('form.your-company-name')}
+					</label>
+					<input
+						type="text"
+						name="company-name"
+						id="company-name"
+						class="rounded-none rounded-t-md font-semibold"
+						placeholder={$t('form.your-company-name')}
+						autocomplete="organization"
+					/>
+				</div>
+				<div class="flex -space-x-px">
+					<div class="w-1/2 min-w-0 flex-1">
+						<label for="company-city" class="sr-only">
+							{$t('form.your-company-city.sr-only')}
+						</label>
+						<input
+							type="text"
+							name="company-city"
+							placeholder={$t('form.your-company-city')}
+							autocomplete="street-address"
+						/>
+					</div>
+					<div class="min-w-0 flex-1">
+						<label
+							for="company-postal-code"
+							class="sr-only"
+						>
+							{$t('form.your-company-postal-code.sr-only')}
+						</label>
+						<input
+							type="text"
+							name="company-postal-code"
+							id="company-postal-code"
+							placeholder={$t(
+								'form.your-company-postal-code'
+							)}
+							autocomplete="postal-code"
+						/>
+					</div>
+				</div>
+				<div>
+					<label for="card-number" class="sr-only">
+						{$t('form.your-company-country.sr-only')}
+					</label>
+					<input
+						type="text"
+						name="card-number"
+						id="card-number"
+						class="rounded-none rounded-b-md"
+						placeholder={$t('form.your-company-country')}
+						autocomplete="country-name"
+					/>
+				</div>
+			</div>
+		</fieldset>
 	</svelte:fragment>
 
 	<svelte:fragment slot="submitted-on">

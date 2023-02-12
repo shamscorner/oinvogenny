@@ -24,5 +24,14 @@
 	"table.body.adjustments": "অন্যান্য",
 	"table.body.total": "সর্বমোট",
 	"print": "প্রিন্ট করুন",
-	"edit": "এডিট করুন"
+	"edit": "এডিট করুন",
+
+	"form.your-company-info": "তোমার কোম্পানি তথ্য",
+	"form.your-company-name": "তোমার কোম্পানি নাম",
+	"form.your-company-city": "শহর",
+	"form.your-company-city.sr-only": "তোমার কোম্পানি শহর",
+	"form.your-company-postal-code": "পোস্টাল কোড",
+	"form.your-company-postal-code.sr-only": "তোমার কোম্পানি পোস্টাল কোড",
+	"form.your-company-country": "দেশ",
+	"form.your-company-country.sr-only": "তোমার দেশ এর নাম"
 }
