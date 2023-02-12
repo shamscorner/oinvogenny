@@ -24,12 +24,9 @@
 	});
 </script>
 
-<div
-	id="overflowed-container"
-	class="h-screen overflow-y-auto pb-16"
->
+<div id="overflowed-container" class="h-screen overflow-y-auto pb-16">
 	<header
-		class="mx-auto px-4 md:px-0 mt-4 flex max-w-2xl items-center justify-between gap-5 print:hidden"
+		class="mx-auto mt-4 flex max-w-2xl items-center justify-between gap-5 px-4 print:hidden md:px-0"
 	>
 		<a href="/">
 			<Icon

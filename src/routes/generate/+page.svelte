@@ -10,14 +10,65 @@
 	onMount(() => {
 		scrollToTop();
 	});
+
+	const formData = {
+		yourCompanyInfo: {
+			companyName: '',
+			city: '',
+			postalCode: '',
+			country: ''
+		},
+		submittedOn: '',
+		invoiceFor: {
+			name: '',
+			address: '',
+			postalCode: '',
+			country: ''
+		},
+		invoiceFrom: {
+			name: '',
+			address: '',
+			postalCode: '',
+			country: ''
+		},
+		invoiceNumber: '',
+		dueDate: '',
+		workDateInterval: {
+			fromDate: '',
+			toDate: ''
+		},
+		items: [
+			{
+				description: 'item 1',
+				quantity: '12',
+				unitPrice: '74'
+			},
+			{
+				description: 'item 2',
+				quantity: '2',
+				unitPrice: '200'
+			},
+			{
+				description: 'item 3',
+				quantity: '70',
+				unitPrice: '40'
+			}
+		],
+		adjustments: '34',
+		note: ''
+	};
+
+	$: subTotal = formData.items.reduce(
+		(acc, item) => acc + +item.quantity * +item.unitPrice,
+		0
+	);
+
+	$: total = subTotal + +formData.adjustments;
 </script>
 
 <svelte:head>
 	<title>{$t('page-title.generate')}</title>
-	<meta
-		name="description"
-		content={$t('page-meta.description.generate')}
-	/>
+	<meta name="description" content={$t('page-meta.description.generate')} />
 </svelte:head>
 
 <InvoiceSkeleton>
@@ -27,13 +78,14 @@
 				{$t('form.your-company-name')}
 			</legend>
 			<div
-				class="mt-1 -space-y-px rounded-md bg-white dark:bg-gray-800 shadow-sm"
+				class="mt-1 -space-y-px rounded-md bg-white shadow-sm dark:bg-gray-800"
 			>
 				<div>
 					<label for="company-name" class="sr-only">
 						{$t('form.your-company-name')}
 					</label>
 					<input
+						bind:value={formData.yourCompanyInfo.companyName}
 						type="text"
 						name="company-name"
 						id="company-name"
@@ -48,6 +100,7 @@
 							{$t('form.your-company-city.sr-only')}
 						</label>
 						<input
+							bind:value={formData.yourCompanyInfo.city}
 							type="text"
 							name="company-city"
 							placeholder={$t('form.your-company-city')}
@@ -55,19 +108,15 @@
 						/>
 					</div>
 					<div class="min-w-0 flex-1">
-						<label
-							for="company-postal-code"
-							class="sr-only"
-						>
+						<label for="company-postal-code" class="sr-only">
 							{$t('form.your-company-postal-code.sr-only')}
 						</label>
 						<input
+							bind:value={formData.yourCompanyInfo.postalCode}
 							type="text"
 							name="company-postal-code"
 							id="company-postal-code"
-							placeholder={$t(
-								'form.your-company-postal-code'
-							)}
+							placeholder={$t('form.your-company-postal-code')}
 							autocomplete="postal-code"
 						/>
 					</div>
@@ -77,6 +126,7 @@
 						{$t('form.your-company-country.sr-only')}
 					</label>
 					<input
+						bind:value={formData.yourCompanyInfo.country}
 						type="text"
 						name="card-number"
 						id="card-number"
@@ -101,13 +151,14 @@
 				{$t('form.invoice-for')}
 			</legend>
 			<div
-				class="mt-1 -space-y-px rounded-md bg-white dark:bg-gray-800 shadow-sm"
+				class="mt-1 -space-y-px rounded-md bg-white shadow-sm dark:bg-gray-800"
 			>
 				<div>
 					<label for="invoice-for-name" class="sr-only">
 						{$t('form.invoice-for.name')}
 					</label>
 					<input
+						bind:value={formData.invoiceFor.name}
 						type="text"
 						name="invoice-for-name"
 						id="invoice-for-name"
@@ -121,6 +172,7 @@
 						{$t('form.invoice-for.address')}
 					</label>
 					<input
+						bind:value={formData.invoiceFor.address}
 						type="text"
 						name="invoice-for-address"
 						id="invoice-for-address"
@@ -129,13 +181,11 @@
 					/>
 				</div>
 				<div>
-					<label
-						for="invoice-for-postal-code"
-						class="sr-only"
-					>
+					<label for="invoice-for-postal-code" class="sr-only">
 						{$t('form.invoice-for.postal-code')}
 					</label>
 					<input
+						bind:value={formData.invoiceFor.postalCode}
 						type="text"
 						name="invoice-for-postal-code"
 						id="invoice-for-postal-code"
@@ -148,6 +198,7 @@
 						{$t('form.invoice-for.country')}
 					</label>
 					<input
+						bind:value={formData.invoiceFor.country}
 						type="text"
 						name="invoice-for-country"
 						id="invoice-for-country"
@@ -166,13 +217,14 @@
 				{$t('form.invoice-from')}
 			</legend>
 			<div
-				class="mt-1 -space-y-px rounded-md bg-white dark:bg-gray-800 shadow-sm"
+				class="mt-1 -space-y-px rounded-md bg-white shadow-sm dark:bg-gray-800"
 			>
 				<div>
 					<label for="invoice-from-name" class="sr-only">
 						{$t('form.invoice-from.name')}
 					</label>
 					<input
+						bind:value={formData.invoiceFrom.name}
 						type="text"
 						name="invoice-from-name"
 						id="invoice-from-name"
@@ -186,6 +238,7 @@
 						{$t('form.invoice-from.address')}
 					</label>
 					<input
+						bind:value={formData.invoiceFrom.address}
 						type="text"
 						name="invoice-from-address"
 						id="invoice-from-address"
@@ -194,19 +247,15 @@
 					/>
 				</div>
 				<div>
-					<label
-						for="invoice-from-postal-code"
-						class="sr-only"
-					>
+					<label for="invoice-from-postal-code" class="sr-only">
 						{$t('form.invoice-from.postal-code')}
 					</label>
 					<input
+						bind:value={formData.invoiceFrom.postalCode}
 						type="text"
 						name="invoice-from-postal-code"
 						id="invoice-from-postal-code"
-						placeholder={$t(
-							'form.invoice-from.postal-code'
-						)}
+						placeholder={$t('form.invoice-from.postal-code')}
 						autocomplete="postal-code"
 					/>
 				</div>
@@ -215,6 +264,7 @@
 						{$t('form.invoice-from.country')}
 					</label>
 					<input
+						bind:value={formData.invoiceFrom.country}
 						type="text"
 						name="invoice-from-country"
 						id="invoice-from-country"
@@ -233,10 +283,11 @@
 				{$t('form.invoice-number.sr-only')}
 			</label>
 			<input
+				bind:value={formData.invoiceNumber}
 				type="text"
 				name="invoice-number"
 				id="invoice-number"
-				class="rounded-md mt-2"
+				class="mt-2 rounded-md"
 				placeholder={$t('form.invoice-number')}
 				autocomplete="country-name"
 			/>
@@ -248,91 +299,77 @@
 	</svelte:fragment>
 
 	<svelte:fragment slot="work-date-for">
-		<p
-			class="mt-2 text-sm text-gray-500 dark:text-gray-300"
-		>
+		<p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
 			{$t('work-for-date')}
-			<time datetime="2022-08-01" class="text-pink-500">
-				August 1, 2022
-			</time>
+			<time datetime="2022-08-01" class="text-pink-500"> August 1, 2022 </time>
 			-
-			<time datetime="2022-08-31" class="text-pink-500">
-				August 31, 2022
-			</time>
+			<time datetime="2022-08-31" class="text-pink-500"> August 31, 2022 </time>
 		</p>
 	</svelte:fragment>
 
 	<svelte:fragment slot="table-row">
-		<tr
-			class="border-b border-gray-200 dark:border-gray-600"
-		>
-			<td class="py-4 pl-4 pr-3 text-xs sm:pl-6 md:pl-0">
-				<div>
-					<label for="item-description" class="sr-only">
-						{$t('form.service-item.description')}
-					</label>
-					<input
-						type="text"
-						name="item-description"
-						id="item-description"
-						class="rounded-md"
-						placeholder={$t(
-							'form.service-item.description'
-						)}
-					/>
-				</div>
-				<!-- TODO: work on it -->
-				<div class="mt-0.5 sm:hidden">
-					12.0 hours at $75.00
-				</div>
-			</td>
-			<td
-				class="hidden py-4 px-3 text-right text-xs sm:table-cell"
-			>
-				<div class="flex flex-col items-end">
-					<label for="item-quantity" class="sr-only">
-						{$t('form.service-item.quantity')}
-					</label>
-					<input
-						type="number"
-						name="item-quantity"
-						id="item-quantity"
-						class="rounded-md max-w-[100px] text-right"
-						placeholder={$t('form.service-item.quantity')}
-						min="0"
-					/>
-				</div>
-			</td>
-			<td
-				class="hidden py-4 px-3 text-right text-xs sm:table-cell"
-			>
-				<CurrencyValueInput
-					name="item-unit-price"
-					id="item-unit-price"
-					placeholder={$t('form.service-item.unit-price')}
-					classes="flex flex-col items-end"
-				>
-					<svelte:fragment slot="label">
-						{$t('form.service-item.unit-price')}
-					</svelte:fragment>
-				</CurrencyValueInput>
-			</td>
-			<!-- TODO: auto calculate -->
-			<td
-				class="py-4 pl-3 pr-4 text-right text-xs sm:pr-6 md:pr-0"
-			>
-				$900.00
-			</td>
-		</tr>
+		{#each formData.items as item, itemIdx (itemIdx)}
+			<tr class="border-b border-gray-200 dark:border-gray-600">
+				<td class="py-4 pl-4 pr-3 text-sm sm:pl-6 md:pl-0">
+					<div>
+						<label for="item-description" class="sr-only">
+							{$t('form.service-item.description')}
+						</label>
+						<input
+							bind:value={item.description}
+							type="text"
+							name="item-description"
+							id="item-description"
+							class="rounded-md"
+							placeholder={$t('form.service-item.description')}
+						/>
+					</div>
+					<!-- TODO: work on it -->
+					<div class="mt-0.5 sm:hidden">12.0 hours at $75.00</div>
+				</td>
+				<td class="hidden py-4 px-3 text-right text-sm sm:table-cell">
+					<div class="flex flex-col items-end">
+						<label for="item-quantity" class="sr-only">
+							{$t('form.service-item.quantity')}
+						</label>
+						<input
+							bind:value={item.quantity}
+							type="number"
+							name="item-quantity"
+							id="item-quantity"
+							class="max-w-[100px] rounded-md text-right"
+							placeholder={$t('form.service-item.quantity')}
+							min="0"
+						/>
+					</div>
+				</td>
+				<td class="hidden py-4 px-3 text-right text-sm sm:table-cell">
+					<CurrencyValueInput
+						bind:value={item.unitPrice}
+						name="item-unit-price"
+						id="item-unit-price"
+						placeholder={$t('form.service-item.unit-price')}
+						classes="flex flex-col items-end"
+					>
+						<svelte:fragment slot="label">
+							{$t('form.service-item.unit-price')}
+						</svelte:fragment>
+					</CurrencyValueInput>
+				</td>
+				<td class="py-4 pl-3 pr-4 text-right text-sm sm:pr-6 md:pr-0">
+					${(+item.quantity * +item.unitPrice).toFixed(2)}
+				</td>
+			</tr>
+		{/each}
 	</svelte:fragment>
 
 	<svelte:fragment slot="subtotal">
-		<!-- TODO: auto calculate -->
-		$3,900.00
+		${subTotal.toFixed(2)}
 	</svelte:fragment>
 
 	<svelte:fragment slot="adjustments">
 		<CurrencyValueInput
+			bind:value={formData.adjustments}
 			name="item-adjustments"
 			id="item-adjustments"
 			placeholder={$t('form.service-item.adjustments')}
@@ -345,8 +382,7 @@
 	</svelte:fragment>
 
 	<svelte:fragment slot="total">
-		<!-- TODO: auto calculate	 -->
-		$4,485.00
+		${total.toFixed(2)}
 	</svelte:fragment>
 
 	<svelte:fragment slot="note">
@@ -356,6 +392,7 @@
 			</label>
 			<div class="mt-2">
 				<textarea
+					bind:value={formData.note}
 					rows="2"
 					name="item-note"
 					id="item-note"
@@ -366,7 +403,7 @@
 		</div>
 	</svelte:fragment>
 
-	<section class="text-center mt-8">
+	<section class="mt-8 text-center">
 		<LinkPrimary href="/preview">
 			{$t('preview')}
 			<Icon

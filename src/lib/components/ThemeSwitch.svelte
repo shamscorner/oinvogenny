@@ -7,10 +7,7 @@
 	function handleSwitchDarkMode() {
 		darkMode = !darkMode;
 
-		localStorage.setItem(
-			'theme',
-			darkMode ? 'dark' : 'light'
-		);
+		localStorage.setItem('theme', darkMode ? 'dark' : 'light');
 
 		darkMode
 			? document.documentElement.classList.add('dark')
@@ -21,8 +18,7 @@
 		if (
 			localStorage.theme === 'dark' ||
 			(!('theme' in localStorage) &&
-				window.matchMedia('(prefers-color-scheme: dark)')
-					.matches)
+				window.matchMedia('(prefers-color-scheme: dark)').matches)
 		) {
 			document.documentElement.classList.add('dark');
 			darkMode = true;

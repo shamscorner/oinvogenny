@@ -21,7 +21,7 @@
 			type="number"
 			{name}
 			{id}
-			class="rounded-md max-w-[100px] text-right pl-7"
+			class="max-w-[100px] rounded-md pl-7 text-right"
 			{placeholder}
 			min="0"
 			aria-describedby="price-currency"
