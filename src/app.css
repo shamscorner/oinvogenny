@@ -4,7 +4,7 @@
 
 @layer base {
 	a {
-		@apply rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400;
+		@apply rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400;
 	}
 
 	input[type='number']::-webkit-outer-spin-button,

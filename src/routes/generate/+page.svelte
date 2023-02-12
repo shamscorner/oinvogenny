@@ -39,22 +39,12 @@
 		},
 		items: [
 			{
-				description: 'item 1',
-				quantity: '12',
-				unitPrice: '74'
-			},
-			{
-				description: 'item 2',
-				quantity: '2',
-				unitPrice: '200'
-			},
-			{
-				description: 'item 3',
-				quantity: '70',
-				unitPrice: '40'
+				description: '',
+				quantity: '',
+				unitPrice: ''
 			}
 		],
-		adjustments: '34',
+		adjustments: '',
 		note: ''
 	};
 
@@ -64,6 +54,25 @@
 	);
 
 	$: total = subTotal + +formData.adjustments;
+
+	function addNewItem() {
+		formData.items = [
+			...formData.items,
+			{
+				description: '',
+				quantity: '',
+				unitPrice: ''
+			}
+		];
+	}
+
+	function removeItem(idx: number) {
+		formData.items = formData.items.filter((_, itemIdx) => itemIdx !== idx);
+
+		if (!formData.items.length) {
+			addNewItem();
+		}
+	}
 </script>
 
 <svelte:head>
@@ -360,7 +369,7 @@
 	<svelte:fragment slot="table-row">
 		{#each formData.items as item, itemIdx (itemIdx)}
 			<tr class="border-b border-gray-200 dark:border-gray-600">
-				<td class="py-4 pl-4 pr-3 text-sm sm:pl-6 md:pl-0">
+				<td class="py-4 pl-4 pr-3 text-sm sm:pl-6 md:pl-0 relative">
 					<div>
 						<label for="item-description" class="sr-only">
 							{$t('form.service-item.description')}
@@ -373,6 +382,12 @@
 							class="rounded-md"
 							placeholder={$t('form.service-item.description')}
 						/>
+						<button
+							class="bg-red-500/50 flex items-center justify-center rounded-full w-5 h-5 text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/50 hover:bg-red-600/80 transition-colors focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 absolute -right-4 top-6"
+							on:click={() => removeItem(itemIdx)}
+						>
+							-
+						</button>
 					</div>
 					<!-- small screen only -->
 					<div class="mt-4 sm:hidden flex gap-4">
@@ -402,6 +417,15 @@
 							</svelte:fragment>
 						</CurrencyValueInput>
 					</div>
+
+					{#if itemIdx === formData.items.length - 1}
+						<button
+							class="bg-pink-500 flex items-center justify-center rounded-full w-7 h-7 text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 hover:bg-pink-600 transition-colors focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 absolute -bottom-10"
+							on:click={() => addNewItem()}
+						>
+							+
+						</button>
+					{/if}
 				</td>
 				<td class="hidden py-4 px-3 text-right text-sm sm:table-cell">
 					<div class="flex flex-col items-end">
