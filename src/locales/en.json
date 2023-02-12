@@ -22,5 +22,7 @@
 	"table.head.total-price": "Total Price",
 	"table.body.subtotal": "Subtotal",
 	"table.body.adjustments": "Adjustments",
-	"table.body.total": "Total"
+	"table.body.total": "Total",
+	"print": "Print",
+	"download": "Download"
 }

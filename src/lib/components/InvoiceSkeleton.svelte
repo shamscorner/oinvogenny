@@ -1,11 +1,17 @@
 <script lang="ts">
+	import ButtonPrimary from '$lib/components/buttons/ButtonPrimary.svelte';
+	// import ButtonSecondary from '$lib/components/buttons/ButtonSecondary.svelte';
 	import UploadIcon from '$lib/assets/upload-icon.svg';
 	import { t } from '$lib/i18n';
+
+	function printInvoice() {
+		window.print();
+	}
 </script>
 
-<div class="px-4 sm:px-6">
+<div class="px-4 sm:px-6 print:px-0">
 	<div
-		class="mx-auto mt-6 max-w-2xl rounded-lg bg-white p-4 text-gray-500 shadow-lg dark:bg-gray-800 dark:text-gray-400 sm:p-6"
+		class="mx-auto mt-6 max-w-2xl rounded-lg bg-white p-4 text-gray-500 shadow-lg dark:bg-gray-800 dark:text-gray-400 sm:p-6 print:shadow-none print:bg-white print:text-gray-500"
 	>
 		<header class="flex justify-between">
 			<section class="text-xs">
@@ -193,4 +199,16 @@
 			<slot name="note" />
 		</footer>
 	</div>
+
+	<section
+		class="flex items-center justify-center gap-5 mt-8 print:hidden"
+	>
+		<ButtonPrimary on:click={printInvoice}>
+			{$t('print')}
+		</ButtonPrimary>
+
+		<!-- <ButtonSecondary>
+			{$t('download')}
+		</ButtonSecondary> -->
+	</section>
 </div>

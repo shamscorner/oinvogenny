@@ -22,5 +22,7 @@
 	"table.head.total-price": "মোট দাম",
 	"table.body.subtotal": "আপাতত মোট",
 	"table.body.adjustments": "অন্যান্য",
-	"table.body.total": "সর্বমোট"
+	"table.body.total": "সর্বমোট",
+	"print": "প্রিন্ট করুন",
+	"download": "ডাউনলোড করুন"
 }

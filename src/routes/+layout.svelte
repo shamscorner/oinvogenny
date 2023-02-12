@@ -26,7 +26,7 @@
 
 <div class="h-screen overflow-y-auto pb-16">
 	<header
-		class="mx-auto mt-4 flex max-w-2xl items-center justify-between gap-5"
+		class="mx-auto mt-4 flex max-w-2xl items-center justify-between gap-5 print:hidden"
 	>
 		<a href="/">
 			<Icon
