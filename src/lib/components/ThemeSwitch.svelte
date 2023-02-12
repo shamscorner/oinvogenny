@@ -42,7 +42,7 @@
 >
 	<span class="sr-only">{$t('change-theme')}</span>
 	<span
-		class="pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-gray-700 shadow ring-0 transition duration-200 ease-in-out {darkMode
+		class="pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-gray-50 dark:bg-gray-700 shadow ring-0 transition duration-200 ease-in-out {darkMode
 			? 'translate-x-5'
 			: 'translate-x-0'}"
 	>
