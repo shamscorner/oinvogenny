@@ -1,9 +1,12 @@
 {
 	"page-title.generate": "ইনভইচ তৈরি করুন",
 	"page-meta.description.generate": "আপনার দেয়া বর্ণনার উপর ভিত্তি করে ইনভইচ তৈরি করুন",
+	"page-title.preview": "ইনভইচ দেখুন",
+	"page-meta.description.preview": "আপনি যে বর্ণনা দিয়েছেন সেটা পর্যবেক্ষণ করুন",
 
 	"welcome": "সব থেকে সহজ ইনভইচ জেনারেটর অ্যাপ এ স্বাগতম!",
 	"generate": "জেনারেট",
+	"preview": "পর্যবেক্ষণ",
 	"change-theme": "থিম পালটান",
 	"upload-logo": "লোগো আপলোড করুন",
 	"invoice": "ইনভইচ",
