@@ -1,6 +1,7 @@
 <script lang="ts">
 	import InvoiceSkeleton from '$lib/components/InvoiceSkeleton.svelte';
 	import LinkPrimary from '$lib/components/links/LinkPrimary.svelte';
+	import CurrencyValueInput from '$lib/components/inputs/CurrencyValueInput.svelte';
 	import Icon from '@iconify/svelte';
 	import { scrollToTop } from '$lib/helpers';
 	import { onMount } from 'svelte';
@@ -305,30 +306,16 @@
 			<td
 				class="hidden py-4 px-3 text-right text-xs sm:table-cell"
 			>
-				<div class="flex flex-col items-end">
-					<label for="item-unit-price" class="sr-only">
+				<CurrencyValueInput
+					name="item-unit-price"
+					id="item-unit-price"
+					placeholder={$t('form.service-item.unit-price')}
+					classes="flex flex-col items-end"
+				>
+					<svelte:fragment slot="label">
 						{$t('form.service-item.unit-price')}
-					</label>
-					<div class="relative rounded-md shadow-sm">
-						<div
-							class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
-						>
-							<span class="text-gray-500 sm:text-sm">$</span
-							>
-						</div>
-						<input
-							type="number"
-							name="item-unit-price"
-							id="item-unit-price"
-							class="rounded-md max-w-[100px] text-right pl-7"
-							placeholder={$t(
-								'form.service-item.unit-price'
-							)}
-							min="0"
-							aria-describedby="price-currency"
-						/>
-					</div>
-				</div>
+					</svelte:fragment>
+				</CurrencyValueInput>
 			</td>
 			<!-- TODO: auto calculate -->
 			<td
@@ -345,27 +332,16 @@
 	</svelte:fragment>
 
 	<svelte:fragment slot="adjustments">
-		<div class="flex flex-col items-end">
-			<label for="item-adjustments" class="sr-only">
+		<CurrencyValueInput
+			name="item-adjustments"
+			id="item-adjustments"
+			placeholder={$t('form.service-item.adjustments')}
+			classes="flex flex-col items-end"
+		>
+			<svelte:fragment slot="label">
 				{$t('form.service-item.adjustments')}
-			</label>
-			<div class="relative mt-1 rounded-md shadow-sm">
-				<div
-					class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
-				>
-					<span class="text-gray-500 sm:text-sm">$</span>
-				</div>
-				<input
-					type="number"
-					name="item-adjustments"
-					id="item-adjustments"
-					class="rounded-md max-w-[100px] text-right pl-7"
-					placeholder={$t('form.service-item.adjustments')}
-					min="0"
-					aria-describedby="price-currency"
-				/>
-			</div>
-		</div>
+			</svelte:fragment>
+		</CurrencyValueInput>
 	</svelte:fragment>
 
 	<svelte:fragment slot="total">
