@@ -1,15 +1,25 @@
 <script lang="ts">
 	import '../app.css';
+	import { onMount } from 'svelte';
 	import Icon from '@iconify/svelte';
+	import PageLoader from '$lib/components/PageLoader.svelte';
 	import ThemeSwitch from '$lib/components/ThemeSwitch.svelte';
 	import DropDown from '$lib/components/DropDown.svelte';
 	import { locale, locales, saveLang } from '$lib/i18n';
 	import type { LocaleType } from '$lib/i18n/translations';
 
+	let isPageLoader = true;
+
 	function setLocaleLang(l: LocaleType) {
 		$locale = l;
 		saveLang(l);
 	}
+
+	onMount(() => {
+		setTimeout(() => {
+			isPageLoader = false;
+		}, 2000);
+	});
 </script>
 
 <div class="h-screen overflow-y-auto pb-16">
@@ -42,3 +52,7 @@
 	</header>
 	<slot />
 </div>
+
+{#if isPageLoader}
+	<PageLoader />
+{/if}
