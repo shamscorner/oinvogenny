@@ -52,7 +52,7 @@
 				: 'opacity-100 ease-in duration-200'}"
 			aria-hidden="true"
 		>
-			🌙
+			☀️
 		</span>
 		<span
 			class="absolute inset-0 flex h-full w-full items-center justify-center transition-opacity {darkMode
@@ -60,7 +60,7 @@
 				: 'opacity-0 ease-out duration-100'}"
 			aria-hidden="true"
 		>
-			☀️
+			🌙
 		</span>
 	</span>
 </button>

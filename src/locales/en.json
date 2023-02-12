@@ -12,6 +12,7 @@
 	"invoice-from": "Invoice from",
 	"due-date": "Due date",
 	"note": "Note",
+	"work-for-date": "Work completed for",
 	"table.head.description": "Description",
 	"table.head.qty": "Qty ({{quantity}})",
 	"table.head.unit-price": "Unit Price (/{{unit}})",

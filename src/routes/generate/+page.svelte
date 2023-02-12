@@ -13,7 +13,7 @@
 
 <div class="px-4 sm:px-6">
 	<div
-		class="mx-auto mt-8 max-w-2xl rounded-lg bg-white dark:bg-gray-800 p-4 text-gray-500 dark:text-gray-400 shadow-lg sm:p-6"
+		class="mx-auto mt-6 max-w-2xl rounded-lg bg-white dark:bg-gray-800 p-4 text-gray-500 dark:text-gray-400 shadow-lg sm:p-6"
 	>
 		<header class="flex justify-between">
 			<section class="text-xs">
@@ -100,14 +100,14 @@
 				<p
 					class="mt-2 text-sm text-gray-700 dark:text-gray-300"
 				>
-					For work completed from
+					{$t('work-for-date')}
 					<time datetime="2022-08-01" class="text-pink-500">
 						August 1, 2022
 					</time>
-					to
+					-
 					<time datetime="2022-08-31" class="text-pink-500">
 						August 31, 2022
-					</time>.
+					</time>
 				</p>
 
 				<div
