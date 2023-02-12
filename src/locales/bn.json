@@ -33,5 +33,22 @@
 	"form.your-company-postal-code": "পোস্টাল কোড",
 	"form.your-company-postal-code.sr-only": "তোমার কোম্পানি পোস্টাল কোড",
 	"form.your-company-country": "দেশ",
-	"form.your-company-country.sr-only": "তোমার দেশ এর নাম"
+	"form.your-company-country.sr-only": "তোমার দেশ এর নাম",
+	"form.invoice-for": "আপনি কোথায় এই ইনভইচটি পাঠাবেন?",
+	"form.invoice-for.name": "নাম/কোম্পানি",
+	"form.invoice-for.address": "ঠিকানা",
+	"form.invoice-for.postal-code": "পোস্টাল কোড",
+	"form.invoice-for.country": "দেশ",
+	"form.invoice-from": "কোথায় থেকে এই ইনভইচটি করা হচ্ছে?",
+	"form.invoice-from.name": "নাম/কোম্পানি",
+	"form.invoice-from.address": "ঠিকানা",
+	"form.invoice-from.postal-code": "পোস্টাল কোড",
+	"form.invoice-from.country": "দেশ",
+	"form.invoice-number": "SK-2023014",
+	"form.invoice-number.sr-only": "ইনভইচ নম্বর",
+	"form.service-item.description": "ল্যান্ডিং পেইজ এর ডিজাইন",
+	"form.service-item.quantity": "40.0",
+	"form.service-item.unit-price": "55.00",
+	"form.service-item.adjustments": "0.00",
+	"form.service-item.note": "দক্ষ সফটওয়্যার দিয়ে সময় মাপা হয়েছে এবং পরবর্তীতে পাঠানো যেতে পারে। এই মর্মে আমি বলছি সব তথ্যগুলো সঠিক এবং যাচাই করা হেয়েছে।"
 }

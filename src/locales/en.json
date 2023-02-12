@@ -33,5 +33,22 @@
 	"form.your-company-postal-code": "Postal Code",
 	"form.your-company-postal-code.sr-only": "Your company Postal Code",
 	"form.your-company-country": "Country",
-	"form.your-company-country.sr-only": "Your country of origin"
+	"form.your-company-country.sr-only": "Your country of origin",
+	"form.invoice-for": "Where would you send this invoice?",
+	"form.invoice-for.name": "Name/Company",
+	"form.invoice-for.address": "Address",
+	"form.invoice-for.postal-code": "Postal Code",
+	"form.invoice-for.country": "Country",
+	"form.invoice-from": "Where is the invoice originated from?",
+	"form.invoice-from.name": "Name/Company",
+	"form.invoice-from.address": "Address",
+	"form.invoice-from.postal-code": "Postal Code",
+	"form.invoice-from.country": "Country",
+	"form.invoice-number": "SK-2023014",
+	"form.invoice-number.sr-only": "Invoice number",
+	"form.service-item.description": "Landing page design",
+	"form.service-item.quantity": "40.0",
+	"form.service-item.unit-price": "55.00",
+	"form.service-item.adjustments": "0.00",
+	"form.service-item.note": "Specialized software is used to record the work hours & can be sent if necessary. With this, I confirm that all the information mentioned above is correct & validated."
 }
