@@ -13,7 +13,7 @@
 
 <div class="px-4 sm:px-6">
 	<div
-		class="mx-auto mt-6 max-w-2xl rounded-lg bg-white dark:bg-gray-800 p-4 text-gray-500 dark:text-gray-400 shadow-lg sm:p-6"
+		class="mx-auto mt-6 max-w-2xl rounded-lg bg-white p-4 text-gray-500 shadow-lg dark:bg-gray-800 dark:text-gray-400 sm:p-6"
 	>
 		<header class="flex justify-between">
 			<section class="text-xs">
@@ -47,7 +47,7 @@
 				</h2>
 
 				<div
-					class="mt-3 grid grid-cols-1 xs:grid-cols-3 gap-4 text-xs"
+					class="mt-3 grid grid-cols-1 gap-4 text-xs xs:grid-cols-3"
 				>
 					<div class="space-y-1">
 						<h3

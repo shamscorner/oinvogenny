@@ -1,8 +1,8 @@
 <div
-	class="text-pink-500 absolute inset-0 bg-gray-200 grid place-items-center dark:bg-gray-800"
+	class="absolute inset-0 grid place-items-center bg-gray-200 text-pink-500 dark:bg-gray-800"
 >
 	<svg
-		class="animate-spin -ml-1 mr-3 h-10 w-10"
+		class="-ml-1 mr-3 h-10 w-10 animate-spin"
 		xmlns="http://www.w3.org/2000/svg"
 		fill="none"
 		viewBox="0 0 24 24"

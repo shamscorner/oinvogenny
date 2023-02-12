@@ -26,7 +26,7 @@
 
 <div class="h-screen overflow-y-auto pb-16">
 	<header
-		class="flex items-center gap-5 justify-between max-w-2xl mx-auto mt-4"
+		class="mx-auto mt-4 flex max-w-2xl items-center justify-between gap-5"
 	>
 		<a href="/">
 			<Icon
@@ -63,7 +63,7 @@
 				{#each locales as l}
 					<button
 						id="menu-item-{l}"
-						class="text-gray-700 dark:text-gray-400 block px-4 py-2 text-sm hover:text-pink-500 transition-colors dark:hover:text-pink-500 uppercase w-full text-left"
+						class="block w-full px-4 py-2 text-left text-sm uppercase text-gray-700 transition-colors hover:text-pink-500 dark:text-gray-400 dark:hover:text-pink-500"
 						role="menuitem"
 						tabindex="-1"
 						on:click={() => setLocaleLang(l)}
