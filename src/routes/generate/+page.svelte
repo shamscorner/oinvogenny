@@ -186,16 +186,16 @@
 					<img
 						src={$companyAvatar.avatar}
 						alt={$t('company-logo')}
-						width="128"
-						height="128"
-						class="h-32 w-32 rounded-full object-cover"
+						width="96"
+						height="96"
+						class="h-24 w-24 rounded-full object-cover"
 					/>
 				{:else}
 					<img
 						src={UploadIcon}
 						alt={$t('upload-logo')}
-						width="128"
-						height="128"
+						width="96"
+						height="96"
 					/>
 				{/if}
 			</button>
@@ -446,7 +446,7 @@
 							placeholder={$t('form.service-item.description')}
 						/>
 						<button
-							class="absolute right-0 top-6 z-10 flex h-5 w-5 items-center justify-center rounded-full bg-amber-700 font-semibold text-white transition-colors hover:bg-amber-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800"
+							class="absolute right-0 top-6 z-10 flex h-5 w-5 items-center justify-center rounded-full bg-amber-500 font-semibold text-white transition-colors hover:bg-amber-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 dark:bg-amber-700 dark:focus-visible:ring-amber-700 dark:focus-visible:ring-offset-gray-800"
 							on:click={() => removeItem(itemIdx)}
 						>
 							-

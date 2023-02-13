@@ -14,7 +14,7 @@
 			</section>
 
 			<section
-				class="grid h-32 w-32 place-items-center self-center rounded-full bg-gray-100 dark:bg-gray-700"
+				class="grid h-24 w-24 place-items-center self-center rounded-full bg-gray-100 dark:bg-gray-700"
 			>
 				<slot name="company-logo" />
 			</section>

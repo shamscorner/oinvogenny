@@ -44,9 +44,9 @@
 		<img
 			src={$companyAvatar.avatar}
 			alt={$t('company-logo')}
-			width="128"
-			height="128"
-			class="h-32 w-32 rounded-full object-cover"
+			width="96"
+			height="96"
+			class="h-24 w-24 rounded-full object-cover"
 		/>
 	</svelte:fragment>
 
