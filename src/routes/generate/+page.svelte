@@ -3,12 +3,12 @@
 	import LinkPrimary from '$lib/components/links/LinkPrimary.svelte';
 	import CurrencyValueInput from '$lib/components/inputs/CurrencyValueInput.svelte';
 	import Icon from '@iconify/svelte';
-	import { scrollToTop } from '$lib/helpers';
+	import { arrayBufferToFile, scrollToTop, uploadFile } from '$lib/helpers';
 	import { onMount } from 'svelte';
 	import { t } from '$lib/i18n';
 	import { initIndexDB, type IndexedDBSchemaType } from '$lib/indexDB';
 	import type { IDBPDatabase } from 'idb';
-	import { InvoiceDataIdxDBKey } from '$lib/constants';
+	import { InvoiceDataIdxDBKey, CompanyAvatarIdxDBKey } from '$lib/constants';
 	import {
 		invoiceData,
 		invoiceItemsTotal,
@@ -62,17 +62,18 @@
 	}
 
 	function uploadCompanyLogo(event: Event) {
-		const files = (event.target as HTMLInputElement).files;
-		if (!files || !files.length) return;
-
-		let reader = new FileReader();
-		reader.readAsDataURL(files[0]);
-
-		reader.onload = (e) => {
+		uploadFile(event, (e, fileType) => {
 			if (!e.target) return;
 			if (!e.target.result) return;
-			companyAvatar = e.target.result as string;
-		};
+			if (!idxDB) return;
+
+			const logoResult = e.target.result;
+
+			companyAvatar = arrayBufferToFile(logoResult, fileType);
+
+			const idxDBTransaction = idxDB.transaction('companyAvatar', 'readwrite');
+			idxDBTransaction.store.put(logoResult.toString(), CompanyAvatarIdxDBKey);
+		});
 	}
 </script>
 

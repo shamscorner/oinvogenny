@@ -6,6 +6,10 @@ export interface IndexedDBSchemaType extends DBSchema {
 		value: InvoiceDataType;
 		key: string;
 	};
+	companyAvatar: {
+		value: string;
+		key: string;
+	};
 }
 
 export async function initIndexDB() {
@@ -17,6 +21,7 @@ export async function initIndexDB() {
 	const db = await openDB<IndexedDBSchemaType>('invoice-data-db', 1, {
 		upgrade(db) {
 			db.createObjectStore('invoiceData');
+			db.createObjectStore('companyAvatar');
 		}
 	});
 
