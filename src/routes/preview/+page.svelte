@@ -9,7 +9,8 @@
 	import {
 		invoiceData,
 		invoiceItemsSubTotal,
-		invoiceItemsTotal
+		invoiceItemsTotal,
+		companyAvatar
 	} from '$lib/store';
 
 	function printInvoice() {
@@ -37,6 +38,16 @@
 				.postalCode}
 		</p>
 		<p>{$invoiceData.yourCompanyInfo.country}</p>
+	</svelte:fragment>
+
+	<svelte:fragment slot="company-logo">
+		<img
+			src={$companyAvatar.avatar}
+			alt={$t('company-logo')}
+			width="128"
+			height="128"
+			class="h-32 w-32 rounded-full object-cover"
+		/>
 	</svelte:fragment>
 
 	<svelte:fragment slot="submitted-on">

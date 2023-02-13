@@ -39,6 +39,11 @@ export const invoiceData = writable<InvoiceDataType>({
 	note: ''
 });
 
+export const companyAvatar = writable({
+	avatar: '',
+	type: ''
+});
+
 export const invoiceItemsSubTotal = derived(invoiceData, ($invoiceData) =>
 	$invoiceData.items.reduce(
 		(acc, item) => acc + +item.quantity * +item.unitPrice,

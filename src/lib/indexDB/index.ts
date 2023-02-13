@@ -7,7 +7,10 @@ export interface IndexedDBSchemaType extends DBSchema {
 		key: string;
 	};
 	companyAvatar: {
-		value: string;
+		value: {
+			avatar: ArrayBuffer | string;
+			type: string;
+		};
 		key: string;
 	};
 }

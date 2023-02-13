@@ -12,19 +12,17 @@
 	import {
 		invoiceData,
 		invoiceItemsTotal,
-		invoiceItemsSubTotal
+		invoiceItemsSubTotal,
+		companyAvatar
 	} from '$lib/store';
 	import UploadIcon from '$lib/assets/upload-icon.svg';
 
 	let idxDB: IDBPDatabase<IndexedDBSchemaType> | undefined;
 	let companyLogoInput: HTMLInputElement;
-	let companyAvatar = '';
 
 	onMount(async () => {
 		scrollToTop();
-
 		idxDB = await initIndexDB();
-		if (!idxDB) return;
 	});
 
 	$: {
@@ -69,10 +67,19 @@
 
 			const logoResult = e.target.result;
 
-			companyAvatar = arrayBufferToFile(logoResult, fileType);
+			$companyAvatar = {
+				avatar: arrayBufferToFile(logoResult, fileType),
+				type: fileType
+			};
 
 			const idxDBTransaction = idxDB.transaction('companyAvatar', 'readwrite');
-			idxDBTransaction.store.put(logoResult.toString(), CompanyAvatarIdxDBKey);
+			idxDBTransaction.store.put(
+				{
+					avatar: logoResult,
+					type: fileType
+				},
+				CompanyAvatarIdxDBKey
+			);
 		});
 	}
 </script>
@@ -175,9 +182,9 @@
 					companyLogoInput.click();
 				}}
 			>
-				{#if companyAvatar}
+				{#if $companyAvatar.avatar}
 					<img
-						src={companyAvatar}
+						src={$companyAvatar.avatar}
 						alt={$t('company-logo')}
 						width="128"
 						height="128"

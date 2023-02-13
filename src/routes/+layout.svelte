@@ -9,11 +9,25 @@
 	import type { LocaleType } from '$lib/i18n/translations';
 	import { t } from '$lib/i18n';
 	import { page } from '$app/stores';
-	import { invoiceData } from '$lib/store';
-	import { InvoiceDataIdxDBKey } from '$lib/constants';
-	import { initIndexDB } from '$lib/indexDB';
+	import { invoiceData, companyAvatar } from '$lib/store';
+	import { InvoiceDataIdxDBKey, CompanyAvatarIdxDBKey } from '$lib/constants';
+	import { initIndexDB, type IndexedDBSchemaType } from '$lib/indexDB';
+	import { arrayBufferToFile } from '$lib/helpers';
+	import type { IDBPDatabase } from 'idb';
 
+	let idxDB: IDBPDatabase<IndexedDBSchemaType> | undefined;
 	let isPageLoader = true;
+
+	onMount(async () => {
+		setTimeout(() => {
+			isPageLoader = false;
+		}, 2000);
+
+		idxDB = await initIndexDB();
+
+		loadExistingInvoiceData();
+		loadExistingCompanyAvatar();
+	});
 
 	function setLocaleLang(l: LocaleType) {
 		$locale = l;
@@ -21,7 +35,6 @@
 	}
 
 	async function loadExistingInvoiceData() {
-		const idxDB = await initIndexDB();
 		if (!idxDB) return;
 
 		const existingData = await idxDB
@@ -32,13 +45,19 @@
 		$invoiceData = existingData;
 	}
 
-	onMount(() => {
-		setTimeout(() => {
-			isPageLoader = false;
-		}, 2000);
+	async function loadExistingCompanyAvatar() {
+		if (!idxDB) return;
 
-		loadExistingInvoiceData();
-	});
+		const existingData = await idxDB
+			.transaction('companyAvatar', 'readonly')
+			.store.get(CompanyAvatarIdxDBKey);
+		if (!existingData) return;
+
+		$companyAvatar = {
+			avatar: arrayBufferToFile(existingData.avatar, existingData.type),
+			type: existingData.type
+		};
+	}
 </script>
 
 <div id="overflowed-container" class="h-screen overflow-y-auto pb-16">
