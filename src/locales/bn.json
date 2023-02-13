@@ -25,8 +25,11 @@
 	"table.body.subtotal": "আপাতত মোট",
 	"table.body.adjustments": "অন্যান্য",
 	"table.body.total": "সর্বমোট",
+	"table.body.quantity-at-price": "{{quantity}} ঘণ্টা তে ${{unitPrice}}",
 	"print": "প্রিন্ট করুন",
 	"edit": "এডিট করুন",
+	"hours": "ঘণ্টা",
+	"per-hour": "ঘণ্টা",
 
 	"form.your-company-info": "তোমার কোম্পানি তথ্য",
 	"form.your-company-name": "তোমার কোম্পানি নাম",

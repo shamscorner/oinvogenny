@@ -5,6 +5,7 @@
 	"page-meta.description.preview": "Preview the invoice that you configured on the generate page",
 
 	"welcome": "Welcome to the easiest invoice generator app!",
+
 	"generate": "Generate",
 	"preview": "Preview",
 	"change-theme": "Change Theme",
@@ -25,8 +26,11 @@
 	"table.body.subtotal": "Subtotal",
 	"table.body.adjustments": "Adjustments",
 	"table.body.total": "Total",
+	"table.body.quantity-at-price": "{{quantity}} hours at ${{unitPrice}}",
 	"print": "Print",
 	"edit": "Edit",
+	"hours": "hours",
+	"per-hour": "hr",
 
 	"form.your-company-info": "Your company information",
 	"form.your-company-name": "Your company name",

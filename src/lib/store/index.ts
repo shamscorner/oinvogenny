@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store';
+import { writable, derived } from 'svelte/store';
 import type { InvoiceDataType } from '$lib/types';
 
 export const invoiceData = writable<InvoiceDataType>({
@@ -38,3 +38,15 @@ export const invoiceData = writable<InvoiceDataType>({
 	adjustments: '',
 	note: ''
 });
+
+export const invoiceItemsSubTotal = derived(invoiceData, ($invoiceData) =>
+	$invoiceData.items.reduce(
+		(acc, item) => acc + +item.quantity * +item.unitPrice,
+		0
+	)
+);
+
+export const invoiceItemsTotal = derived(
+	[invoiceData, invoiceItemsSubTotal],
+	([$invoiceData, $subTotal]) => $subTotal - +$invoiceData.adjustments
+);

@@ -9,7 +9,11 @@
 	import { initIndexDB, type IndexedDBSchemaType } from '$lib/indexDB';
 	import type { IDBPDatabase } from 'idb';
 	import { InvoiceDataIdxDBKey } from '$lib/constants';
-	import { invoiceData } from '$lib/store';
+	import {
+		invoiceData,
+		invoiceItemsTotal,
+		invoiceItemsSubTotal
+	} from '$lib/store';
 
 	let idxDB: IDBPDatabase<IndexedDBSchemaType> | undefined;
 
@@ -19,13 +23,6 @@
 		idxDB = await initIndexDB();
 		if (!idxDB) return;
 	});
-
-	$: subTotal = $invoiceData.items.reduce(
-		(acc, item) => acc + +item.quantity * +item.unitPrice,
-		0
-	);
-
-	$: total = subTotal + +$invoiceData.adjustments;
 
 	$: {
 		let timer;
@@ -379,11 +376,11 @@
 							type="text"
 							name="item-description"
 							id="item-description"
-							class="rounded-md"
+							class="rounded-md text-sm"
 							placeholder={$t('form.service-item.description')}
 						/>
 						<button
-							class="bg-red-500/50 flex items-center justify-center rounded-full w-5 h-5 text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/50 hover:bg-red-600/80 transition-colors focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 absolute -right-4 top-6"
+							class="bg-amber-700 flex items-center justify-center rounded-full w-5 h-5 text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 hover:bg-amber-600 transition-colors focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 absolute -right-4 top-6 z-10"
 							on:click={() => removeItem(itemIdx)}
 						>
 							-
@@ -420,7 +417,7 @@
 
 					{#if itemIdx === $invoiceData.items.length - 1}
 						<button
-							class="bg-pink-500 flex items-center justify-center rounded-full w-7 h-7 text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 hover:bg-pink-600 transition-colors focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 absolute -bottom-10"
+							class="bg-pink-500 flex items-center justify-center rounded-full w-7 h-7 text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 hover:bg-pink-600 transition-colors focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 absolute -bottom-10 "
 							on:click={() => addNewItem()}
 						>
 							+
@@ -466,25 +463,28 @@
 	</svelte:fragment>
 
 	<svelte:fragment slot="subtotal">
-		${subTotal.toFixed(2)}
+		${$invoiceItemsSubTotal.toFixed(2)}
 	</svelte:fragment>
 
 	<svelte:fragment slot="adjustments">
-		<CurrencyValueInput
-			bind:value={$invoiceData.adjustments}
-			name="item-adjustments"
-			id="item-adjustments"
-			placeholder={$t('form.service-item.adjustments')}
-			classes="flex flex-col items-end"
-		>
-			<svelte:fragment slot="label">
-				{$t('form.service-item.adjustments')}
-			</svelte:fragment>
-		</CurrencyValueInput>
+		<div class="flex items-center justify-end">
+			<span class="font-bold mr-4">-</span>
+			<CurrencyValueInput
+				bind:value={$invoiceData.adjustments}
+				name="item-adjustments"
+				id="item-adjustments"
+				placeholder={$t('form.service-item.adjustments')}
+				classes="flex flex-col items-end"
+			>
+				<svelte:fragment slot="label">
+					{$t('form.service-item.adjustments')}
+				</svelte:fragment>
+			</CurrencyValueInput>
+		</div>
 	</svelte:fragment>
 
 	<svelte:fragment slot="total">
-		${total.toFixed(2)}
+		${$invoiceItemsTotal.toFixed(2)}
 	</svelte:fragment>
 
 	<svelte:fragment slot="note">
@@ -495,10 +495,10 @@
 			<div class="mt-2">
 				<textarea
 					bind:value={$invoiceData.note}
-					rows="2"
+					rows="4"
 					name="item-note"
 					id="item-note"
-					class="rounded-md"
+					class="rounded-md text-sm"
 					placeholder={$t('form.service-item.note')}
 				/>
 			</div>

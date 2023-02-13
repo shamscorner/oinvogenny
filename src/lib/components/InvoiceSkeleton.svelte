@@ -1,6 +1,8 @@
 <script lang="ts">
 	// import UploadIcon from '$lib/assets/upload-icon.svg';
 	import { t } from '$lib/i18n';
+
+	export let isNoteAvailable = true;
 </script>
 
 <div class="px-4 print:px-0 sm:px-6">
@@ -91,7 +93,7 @@
 									class="hidden py-3.5 px-3 text-right text-sm font-semibold text-blue-500 sm:table-cell"
 								>
 									{$t('table.head.qty', {
-										quantity: 'hours'
+										quantity: $t('hours')
 									})}
 								</th>
 								<th
@@ -99,7 +101,7 @@
 									class="hidden py-3.5 px-3 text-right text-sm font-semibold text-blue-500 sm:table-cell"
 								>
 									{$t('table.head.unit-price', {
-										unit: 'hr'
+										unit: $t('per-hour')
 									})}
 								</th>
 								<th
@@ -124,11 +126,13 @@
 								</th>
 								<th
 									scope="row"
-									class="pl-4 pr-3 pt-4 text-left text-sm font-normal sm:hidden"
+									class="pl-4 pr-3 pt-14 text-left text-sm font-normal sm:hidden"
 								>
 									{$t('table.body.subtotal')}
 								</th>
-								<td class="pl-3 pr-4 pt-4 text-right text-sm sm:pr-6 md:pr-0">
+								<td
+									class="pl-3 pr-4 pt-14 sm:pt-4 text-right text-sm sm:pr-6 md:pr-0"
+								>
 									<slot name="subtotal" />
 								</td>
 							</tr>
@@ -165,7 +169,7 @@
 									{$t('table.body.total')}
 								</th>
 								<td
-									class="pl-3 pr-4 pt-2 text-right text-base font-semibold text-pink-500 sm:pr-6 md:pr-0"
+									class="pl-3 pr-4 pt-2 text-right text-base font-semibold text-pink-400 sm:pr-6 md:pr-0"
 								>
 									<slot name="total" />
 								</td>
@@ -177,10 +181,12 @@
 		</main>
 
 		<footer class="mt-4">
-			<h3 class="text-sm text-gray-500 dark:text-gray-300">
-				{$t('note')}:
-			</h3>
-			<slot name="note" />
+			{#if isNoteAvailable}
+				<h3 class="text-sm text-gray-500 dark:text-gray-300">
+					{$t('note')}:
+				</h3>
+				<slot name="note" />
+			{/if}
 		</footer>
 	</div>
 
