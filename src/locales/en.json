@@ -10,6 +10,7 @@
 	"preview": "Preview",
 	"change-theme": "Change Theme",
 	"upload-logo": "Upload Logo",
+	"company-logo": "Company logo",
 	"invoice": "Invoice",
 	"submitted-on": "Submitted on {{date}}",
 	"invoice-for": "Invoice for",

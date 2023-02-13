@@ -1,5 +1,5 @@
 <div
-	class="absolute inset-0 grid place-items-center bg-gray-200 text-pink-500 dark:bg-gray-800"
+	class="absolute inset-0 z-10 grid place-items-center bg-gray-200 text-pink-500 dark:bg-gray-800"
 >
 	<svg
 		class="-ml-1 mr-3 h-10 w-10 animate-spin"

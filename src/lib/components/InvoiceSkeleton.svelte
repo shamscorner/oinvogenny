@@ -1,5 +1,4 @@
 <script lang="ts">
-	// import UploadIcon from '$lib/assets/upload-icon.svg';
 	import { t } from '$lib/i18n';
 
 	export let isNoteAvailable = true;
@@ -14,12 +13,11 @@
 				<slot name="company-info" />
 			</section>
 
-			<!-- TODO: add image upload feature later -->
-			<!-- <section
-				class="grid h-24 w-24 place-items-center rounded-full bg-gray-100 dark:bg-gray-700"
+			<section
+				class="grid h-32 w-32 place-items-center self-center rounded-full bg-gray-100 dark:bg-gray-700"
 			>
-				<img src={UploadIcon} alt={$t('upload-logo')} width="96" height="96" />
-			</section> -->
+				<slot name="company-logo" />
+			</section>
 		</header>
 
 		<main class="mt-3">

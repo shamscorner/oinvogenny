@@ -14,8 +14,11 @@
 		invoiceItemsTotal,
 		invoiceItemsSubTotal
 	} from '$lib/store';
+	import UploadIcon from '$lib/assets/upload-icon.svg';
 
 	let idxDB: IDBPDatabase<IndexedDBSchemaType> | undefined;
+	let companyLogoInput: HTMLInputElement;
+	let companyAvatar = '';
 
 	onMount(async () => {
 		scrollToTop();
@@ -56,6 +59,20 @@
 		if (!$invoiceData.items.length) {
 			addNewItem();
 		}
+	}
+
+	function uploadCompanyLogo(event: Event) {
+		const files = (event.target as HTMLInputElement).files;
+		if (!files || !files.length) return;
+
+		let reader = new FileReader();
+		reader.readAsDataURL(files[0]);
+
+		reader.onload = (e) => {
+			if (!e.target) return;
+			if (!e.target.result) return;
+			companyAvatar = e.target.result as string;
+		};
 	}
 </script>
 
@@ -143,6 +160,47 @@
 				</div>
 			</div>
 		</fieldset>
+	</svelte:fragment>
+
+	<svelte:fragment slot="company-logo">
+		<div class="flex-shrink-0">
+			<label for="company-logo" class="sr-only">
+				{$t('upload-logo')}
+			</label>
+			<button
+				type="button"
+				class="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-4 dark:focus-visible:ring-offset-gray-800"
+				on:click={() => {
+					companyLogoInput.click();
+				}}
+			>
+				{#if companyAvatar}
+					<img
+						src={companyAvatar}
+						alt={$t('company-logo')}
+						width="128"
+						height="128"
+						class="h-32 w-32 rounded-full object-cover"
+					/>
+				{:else}
+					<img
+						src={UploadIcon}
+						alt={$t('upload-logo')}
+						width="128"
+						height="128"
+					/>
+				{/if}
+			</button>
+			<input
+				bind:this={companyLogoInput}
+				type="file"
+				name="company-logo"
+				id="company-logo"
+				accept="image/*"
+				style="display:none"
+				on:change={(e) => uploadCompanyLogo(e)}
+			/>
+		</div>
 	</svelte:fragment>
 
 	<svelte:fragment slot="submitted-on">
