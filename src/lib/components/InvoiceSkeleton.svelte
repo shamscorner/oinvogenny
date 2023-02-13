@@ -9,7 +9,7 @@
 	<div
 		class="mx-auto mt-6 max-w-3xl rounded-lg bg-white p-4 text-gray-500 shadow-lg dark:bg-gray-800 dark:text-gray-400 print:bg-white print:text-gray-500 print:shadow-none sm:p-6"
 	>
-		<header class="flex flex-col-reverse sm:flex-row justify-between gap-4">
+		<header class="flex flex-col-reverse justify-between gap-4 sm:flex-row">
 			<section class="text-xs">
 				<slot name="company-info" />
 			</section>
@@ -131,7 +131,7 @@
 									{$t('table.body.subtotal')}
 								</th>
 								<td
-									class="pl-3 pr-4 pt-14 sm:pt-4 text-right text-sm sm:pr-6 md:pr-0"
+									class="pl-3 pr-4 pt-14 text-right text-sm sm:pt-4 sm:pr-6 md:pr-0"
 								>
 									<slot name="subtotal" />
 								</td>

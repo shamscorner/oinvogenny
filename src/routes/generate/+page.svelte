@@ -149,7 +149,7 @@
 		<div class="flex items-center gap-4">
 			<label
 				for="submitted-on"
-				class="text-lg font-semibold text-pink-500 flex-shrink-0"
+				class="flex-shrink-0 text-lg font-semibold text-pink-500"
 			>
 				{$t('submitted-on', { date: '' })}
 			</label>
@@ -158,7 +158,7 @@
 				type="date"
 				name="submitted-on"
 				id="submitted-on"
-				class="rounded-md max-w-[180px]"
+				class="max-w-[180px] rounded-md"
 			/>
 		</div>
 	</svelte:fragment>
@@ -328,7 +328,7 @@
 	</svelte:fragment>
 
 	<svelte:fragment slot="work-date-for">
-		<div class="flex flex-col sm:flex-row items-center gap-4">
+		<div class="flex flex-col items-center gap-4 sm:flex-row">
 			<p class="text-sm text-gray-500 dark:text-gray-300">
 				{$t('work-for-date')}
 			</p>
@@ -342,7 +342,7 @@
 					type="date"
 					name="work-from-date"
 					id="work-from-date"
-					class="rounded-md max-w-[180px]"
+					class="max-w-[180px] rounded-md"
 				/>
 			</div>
 
@@ -357,7 +357,7 @@
 					type="date"
 					name="work-to-date"
 					id="work-to-date"
-					class="rounded-md max-w-[180px]"
+					class="max-w-[180px] rounded-md"
 				/>
 			</div>
 		</div>
@@ -366,7 +366,7 @@
 	<svelte:fragment slot="table-row">
 		{#each $invoiceData.items as item, itemIdx (itemIdx)}
 			<tr class="border-b border-gray-200 dark:border-gray-600">
-				<td class="py-4 pl-4 pr-3 text-sm sm:pl-6 md:pl-0 relative">
+				<td class="relative py-4 pl-4 pr-3 text-sm sm:pl-6 md:pl-0">
 					<div>
 						<label for="item-description" class="sr-only">
 							{$t('form.service-item.description')}
@@ -376,18 +376,18 @@
 							type="text"
 							name="item-description"
 							id="item-description"
-							class="rounded-md text-sm min-w-[200px] sm:min-w-[240px] md:min-w-[280px]"
+							class="min-w-[200px] rounded-md text-sm sm:min-w-[240px] md:min-w-[280px]"
 							placeholder={$t('form.service-item.description')}
 						/>
 						<button
-							class="bg-amber-700 flex items-center justify-center rounded-full w-5 h-5 text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 hover:bg-amber-600 transition-colors focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 absolute right-0 top-6 z-10"
+							class="absolute right-0 top-6 z-10 flex h-5 w-5 items-center justify-center rounded-full bg-amber-700 font-semibold text-white transition-colors hover:bg-amber-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800"
 							on:click={() => removeItem(itemIdx)}
 						>
 							-
 						</button>
 					</div>
 					<!-- small screen only -->
-					<div class="mt-4 sm:hidden flex gap-4">
+					<div class="mt-4 flex gap-4 sm:hidden">
 						<div class="flex flex-col items-end">
 							<label for="item-quantity" class="sr-only">
 								{$t('form.service-item.quantity')}
@@ -417,7 +417,7 @@
 
 					{#if itemIdx === $invoiceData.items.length - 1}
 						<button
-							class="bg-pink-500 flex items-center justify-center rounded-full w-7 h-7 text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 hover:bg-pink-600 transition-colors focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 absolute -bottom-10 "
+							class="absolute -bottom-10 flex h-7 w-7 items-center justify-center rounded-full bg-pink-500 font-semibold text-white transition-colors hover:bg-pink-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 "
 							on:click={() => addNewItem()}
 						>
 							+
@@ -454,7 +454,7 @@
 					</CurrencyValueInput>
 				</td>
 				<td
-					class="py-4 pl-3 pr-4 text-right text-sm sm:pr-6 md:pr-0 align-bottom sm:align-middle"
+					class="py-4 pl-3 pr-4 text-right align-bottom text-sm sm:pr-6 sm:align-middle md:pr-0"
 				>
 					${(+item.quantity * +item.unitPrice).toFixed(2)}
 				</td>
@@ -468,7 +468,7 @@
 
 	<svelte:fragment slot="adjustments">
 		<div class="flex items-center justify-end">
-			<span class="font-bold mr-4">-</span>
+			<span class="mr-4 font-bold">-</span>
 			<CurrencyValueInput
 				bind:value={$invoiceData.adjustments}
 				name="item-adjustments"
