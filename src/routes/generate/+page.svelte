@@ -376,11 +376,11 @@
 							type="text"
 							name="item-description"
 							id="item-description"
-							class="rounded-md text-sm"
+							class="rounded-md text-sm min-w-[200px] sm:min-w-[240px] md:min-w-[280px]"
 							placeholder={$t('form.service-item.description')}
 						/>
 						<button
-							class="bg-amber-700 flex items-center justify-center rounded-full w-5 h-5 text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 hover:bg-amber-600 transition-colors focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 absolute -right-4 top-6 z-10"
+							class="bg-amber-700 flex items-center justify-center rounded-full w-5 h-5 text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 hover:bg-amber-600 transition-colors focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 absolute right-0 top-6 z-10"
 							on:click={() => removeItem(itemIdx)}
 						>
 							-

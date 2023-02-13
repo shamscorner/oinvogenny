@@ -7,7 +7,7 @@
 
 <div class="px-4 print:px-0 sm:px-6">
 	<div
-		class="mx-auto mt-6 max-w-2xl rounded-lg bg-white p-4 text-gray-500 shadow-lg dark:bg-gray-800 dark:text-gray-400 print:bg-white print:text-gray-500 print:shadow-none sm:p-6"
+		class="mx-auto mt-6 max-w-3xl rounded-lg bg-white p-4 text-gray-500 shadow-lg dark:bg-gray-800 dark:text-gray-400 print:bg-white print:text-gray-500 print:shadow-none sm:p-6"
 	>
 		<header class="flex flex-col-reverse sm:flex-row justify-between gap-4">
 			<section class="text-xs">
