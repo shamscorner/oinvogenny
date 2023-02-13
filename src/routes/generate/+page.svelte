@@ -6,71 +6,26 @@
 	import { scrollToTop } from '$lib/helpers';
 	import { onMount } from 'svelte';
 	import { t } from '$lib/i18n';
-	import type { InvoiceDataType } from '$lib/types';
 	import { initIndexDB, type IndexedDBSchemaType } from '$lib/indexDB';
 	import type { IDBPDatabase } from 'idb';
 	import { InvoiceDataIdxDBKey } from '$lib/constants';
+	import { invoiceData } from '$lib/store';
 
 	let idxDB: IDBPDatabase<IndexedDBSchemaType> | undefined;
-
-	let formData: InvoiceDataType = {
-		yourCompanyInfo: {
-			companyName: '',
-			name: '',
-			city: '',
-			postalCode: '',
-			country: ''
-		},
-		submittedOn: '',
-		invoiceFor: {
-			name: '',
-			address: '',
-			postalCode: '',
-			country: ''
-		},
-		invoiceFrom: {
-			name: '',
-			address: '',
-			postalCode: '',
-			country: ''
-		},
-		invoiceNumber: '',
-		dueDate: '',
-		workDateInterval: {
-			fromDate: '',
-			toDate: ''
-		},
-		items: [
-			{
-				description: '',
-				quantity: '',
-				unitPrice: ''
-			}
-		],
-		adjustments: '',
-		note: ''
-	};
 
 	onMount(async () => {
 		scrollToTop();
 
 		idxDB = await initIndexDB();
 		if (!idxDB) return;
-
-		const existingData = await idxDB
-			.transaction('invoiceData', 'readonly')
-			.store.get(InvoiceDataIdxDBKey);
-		if (!existingData) return;
-
-		formData = existingData;
 	});
 
-	$: subTotal = formData.items.reduce(
+	$: subTotal = $invoiceData.items.reduce(
 		(acc, item) => acc + +item.quantity * +item.unitPrice,
 		0
 	);
 
-	$: total = subTotal + +formData.adjustments;
+	$: total = subTotal + +$invoiceData.adjustments;
 
 	$: {
 		let timer;
@@ -80,14 +35,14 @@
 				if (!idxDB) return;
 
 				const idxDBTransaction = idxDB.transaction('invoiceData', 'readwrite');
-				idxDBTransaction.store.put(formData, InvoiceDataIdxDBKey);
+				idxDBTransaction.store.put($invoiceData, InvoiceDataIdxDBKey);
 			}, 3000);
 		})();
 	}
 
 	async function addNewItem() {
-		formData.items = [
-			...formData.items,
+		$invoiceData.items = [
+			...$invoiceData.items,
 			{
 				description: '',
 				quantity: '',
@@ -97,9 +52,11 @@
 	}
 
 	function removeItem(idx: number) {
-		formData.items = formData.items.filter((_, itemIdx) => itemIdx !== idx);
+		$invoiceData.items = $invoiceData.items.filter(
+			(_, itemIdx) => itemIdx !== idx
+		);
 
-		if (!formData.items.length) {
+		if (!$invoiceData.items.length) {
 			addNewItem();
 		}
 	}
@@ -124,7 +81,7 @@
 						{$t('form.your-company-name')}
 					</label>
 					<input
-						bind:value={formData.yourCompanyInfo.companyName}
+						bind:value={$invoiceData.yourCompanyInfo.companyName}
 						type="text"
 						name="company-name"
 						id="company-name"
@@ -138,7 +95,7 @@
 						{$t('form.your-name')}
 					</label>
 					<input
-						bind:value={formData.yourCompanyInfo.name}
+						bind:value={$invoiceData.yourCompanyInfo.name}
 						type="text"
 						name="your-name"
 						id="your-name"
@@ -152,7 +109,7 @@
 							{$t('form.your-company-city.sr-only')}
 						</label>
 						<input
-							bind:value={formData.yourCompanyInfo.city}
+							bind:value={$invoiceData.yourCompanyInfo.city}
 							type="text"
 							name="company-city"
 							placeholder={$t('form.your-company-city')}
@@ -164,7 +121,7 @@
 							{$t('form.your-company-postal-code.sr-only')}
 						</label>
 						<input
-							bind:value={formData.yourCompanyInfo.postalCode}
+							bind:value={$invoiceData.yourCompanyInfo.postalCode}
 							type="text"
 							name="company-postal-code"
 							id="company-postal-code"
@@ -178,7 +135,7 @@
 						{$t('form.your-company-country.sr-only')}
 					</label>
 					<input
-						bind:value={formData.yourCompanyInfo.country}
+						bind:value={$invoiceData.yourCompanyInfo.country}
 						type="text"
 						name="card-number"
 						id="card-number"
@@ -200,7 +157,7 @@
 				{$t('submitted-on', { date: '' })}
 			</label>
 			<input
-				bind:value={formData.submittedOn}
+				bind:value={$invoiceData.submittedOn}
 				type="date"
 				name="submitted-on"
 				id="submitted-on"
@@ -222,7 +179,7 @@
 						{$t('form.invoice-for.name')}
 					</label>
 					<input
-						bind:value={formData.invoiceFor.name}
+						bind:value={$invoiceData.invoiceFor.name}
 						type="text"
 						name="invoice-for-name"
 						id="invoice-for-name"
@@ -236,7 +193,7 @@
 						{$t('form.invoice-for.address')}
 					</label>
 					<input
-						bind:value={formData.invoiceFor.address}
+						bind:value={$invoiceData.invoiceFor.address}
 						type="text"
 						name="invoice-for-address"
 						id="invoice-for-address"
@@ -249,7 +206,7 @@
 						{$t('form.invoice-for.postal-code')}
 					</label>
 					<input
-						bind:value={formData.invoiceFor.postalCode}
+						bind:value={$invoiceData.invoiceFor.postalCode}
 						type="text"
 						name="invoice-for-postal-code"
 						id="invoice-for-postal-code"
@@ -262,7 +219,7 @@
 						{$t('form.invoice-for.country')}
 					</label>
 					<input
-						bind:value={formData.invoiceFor.country}
+						bind:value={$invoiceData.invoiceFor.country}
 						type="text"
 						name="invoice-for-country"
 						id="invoice-for-country"
@@ -288,7 +245,7 @@
 						{$t('form.invoice-from.name')}
 					</label>
 					<input
-						bind:value={formData.invoiceFrom.name}
+						bind:value={$invoiceData.invoiceFrom.name}
 						type="text"
 						name="invoice-from-name"
 						id="invoice-from-name"
@@ -302,7 +259,7 @@
 						{$t('form.invoice-from.address')}
 					</label>
 					<input
-						bind:value={formData.invoiceFrom.address}
+						bind:value={$invoiceData.invoiceFrom.address}
 						type="text"
 						name="invoice-from-address"
 						id="invoice-from-address"
@@ -315,7 +272,7 @@
 						{$t('form.invoice-from.postal-code')}
 					</label>
 					<input
-						bind:value={formData.invoiceFrom.postalCode}
+						bind:value={$invoiceData.invoiceFrom.postalCode}
 						type="text"
 						name="invoice-from-postal-code"
 						id="invoice-from-postal-code"
@@ -328,7 +285,7 @@
 						{$t('form.invoice-from.country')}
 					</label>
 					<input
-						bind:value={formData.invoiceFrom.country}
+						bind:value={$invoiceData.invoiceFrom.country}
 						type="text"
 						name="invoice-from-country"
 						id="invoice-from-country"
@@ -347,7 +304,7 @@
 				{$t('form.invoice-number.sr-only')}
 			</label>
 			<input
-				bind:value={formData.invoiceNumber}
+				bind:value={$invoiceData.invoiceNumber}
 				type="text"
 				name="invoice-number"
 				id="invoice-number"
@@ -364,7 +321,7 @@
 				{$t('due-date')}
 			</label>
 			<input
-				bind:value={formData.dueDate}
+				bind:value={$invoiceData.dueDate}
 				type="date"
 				name="due-date"
 				id="due-date"
@@ -384,7 +341,7 @@
 					{$t('date-from')}
 				</label>
 				<input
-					bind:value={formData.workDateInterval.fromDate}
+					bind:value={$invoiceData.workDateInterval.fromDate}
 					type="date"
 					name="work-from-date"
 					id="work-from-date"
@@ -399,7 +356,7 @@
 					{$t('date-to')}
 				</label>
 				<input
-					bind:value={formData.workDateInterval.toDate}
+					bind:value={$invoiceData.workDateInterval.toDate}
 					type="date"
 					name="work-to-date"
 					id="work-to-date"
@@ -410,7 +367,7 @@
 	</svelte:fragment>
 
 	<svelte:fragment slot="table-row">
-		{#each formData.items as item, itemIdx (itemIdx)}
+		{#each $invoiceData.items as item, itemIdx (itemIdx)}
 			<tr class="border-b border-gray-200 dark:border-gray-600">
 				<td class="py-4 pl-4 pr-3 text-sm sm:pl-6 md:pl-0 relative">
 					<div>
@@ -461,7 +418,7 @@
 						</CurrencyValueInput>
 					</div>
 
-					{#if itemIdx === formData.items.length - 1}
+					{#if itemIdx === $invoiceData.items.length - 1}
 						<button
 							class="bg-pink-500 flex items-center justify-center rounded-full w-7 h-7 text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 hover:bg-pink-600 transition-colors focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 absolute -bottom-10"
 							on:click={() => addNewItem()}
@@ -514,7 +471,7 @@
 
 	<svelte:fragment slot="adjustments">
 		<CurrencyValueInput
-			bind:value={formData.adjustments}
+			bind:value={$invoiceData.adjustments}
 			name="item-adjustments"
 			id="item-adjustments"
 			placeholder={$t('form.service-item.adjustments')}
@@ -537,7 +494,7 @@
 			</label>
 			<div class="mt-2">
 				<textarea
-					bind:value={formData.note}
+					bind:value={$invoiceData.note}
 					rows="2"
 					name="item-note"
 					id="item-note"

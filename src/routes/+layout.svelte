@@ -9,6 +9,9 @@
 	import type { LocaleType } from '$lib/i18n/translations';
 	import { t } from '$lib/i18n';
 	import { page } from '$app/stores';
+	import { invoiceData } from '$lib/store';
+	import { InvoiceDataIdxDBKey } from '$lib/constants';
+	import { initIndexDB } from '$lib/indexDB';
 
 	let isPageLoader = true;
 
@@ -17,10 +20,24 @@
 		saveLang(l);
 	}
 
+	async function loadExistingInvoiceData() {
+		const idxDB = await initIndexDB();
+		if (!idxDB) return;
+
+		const existingData = await idxDB
+			.transaction('invoiceData', 'readonly')
+			.store.get(InvoiceDataIdxDBKey);
+		if (!existingData) return;
+
+		$invoiceData = existingData;
+	}
+
 	onMount(() => {
 		setTimeout(() => {
 			isPageLoader = false;
 		}, 2000);
+
+		loadExistingInvoiceData();
 	});
 </script>
 
