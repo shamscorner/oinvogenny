@@ -4,7 +4,7 @@
 	export let isNoteAvailable = true;
 </script>
 
-<div class="px-4 print:px-0 sm:px-6">
+<div class="px-4 print:overflow-x-hidden print:px-0 sm:px-6">
 	<div
 		class="mx-auto mt-6 max-w-3xl rounded-lg bg-white p-4 text-gray-500 shadow-lg dark:bg-gray-800 dark:text-gray-400 print:mt-4 print:bg-white print:p-0 print:text-gray-500 print:shadow-none sm:p-6"
 	>
