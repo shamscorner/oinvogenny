@@ -39,6 +39,8 @@
 	}
 
 	async function addNewItem() {
+		if ($invoiceData.items.length > 4) return;
+
 		$invoiceData.items = [
 			...$invoiceData.items,
 			{
@@ -442,7 +444,7 @@
 							type="text"
 							name="item-description"
 							id="item-description"
-							class="min-w-[200px] rounded-md text-sm sm:min-w-[240px] md:min-w-[280px]"
+							class="min-w-[200px] rounded-md text-sm sm:min-w-[220px] md:min-w-[280px]"
 							placeholder={$t('form.service-item.description')}
 						/>
 						<button

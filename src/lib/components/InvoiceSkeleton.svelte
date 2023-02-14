@@ -6,9 +6,11 @@
 
 <div class="px-4 print:px-0 sm:px-6">
 	<div
-		class="mx-auto mt-6 max-w-3xl rounded-lg bg-white p-4 text-gray-500 shadow-lg dark:bg-gray-800 dark:text-gray-400 print:bg-white print:text-gray-500 print:shadow-none sm:p-6"
+		class="mx-auto mt-6 max-w-3xl rounded-lg bg-white p-4 text-gray-500 shadow-lg dark:bg-gray-800 dark:text-gray-400 print:mt-4 print:bg-white print:p-0 print:text-gray-500 print:shadow-none sm:p-6"
 	>
-		<header class="flex flex-col-reverse justify-between gap-4 sm:flex-row">
+		<header
+			class="flex flex-col-reverse justify-between gap-4 print:flex-row sm:flex-row"
+		>
 			<section class="text-xs">
 				<slot name="company-info" />
 			</section>
@@ -28,7 +30,7 @@
 				<slot name="submitted-on" />
 
 				<div
-					class="mt-3 grid grid-cols-1 gap-4 text-xs xs:grid-cols-2 sm:grid-cols-3"
+					class="mt-3 grid grid-cols-2 gap-4 text-xs print:grid-cols-3 sm:grid-cols-3"
 				>
 					<div class="space-y-1">
 						<h3
@@ -88,7 +90,7 @@
 								</th>
 								<th
 									scope="col"
-									class="hidden py-3.5 px-3 text-right text-sm font-semibold text-blue-500 sm:table-cell"
+									class="hidden py-3.5 px-3 text-right text-sm font-semibold text-blue-500 print:table-cell sm:table-cell"
 								>
 									{$t('table.head.qty', {
 										quantity: $t('hours')
@@ -96,7 +98,7 @@
 								</th>
 								<th
 									scope="col"
-									class="hidden py-3.5 px-3 text-right text-sm font-semibold text-blue-500 sm:table-cell"
+									class="hidden py-3.5 px-3 text-right text-sm font-semibold text-blue-500 print:table-cell sm:table-cell"
 								>
 									{$t('table.head.unit-price', {
 										unit: $t('per-hour')
@@ -118,18 +120,18 @@
 								<th
 									scope="row"
 									colspan="3"
-									class="hidden pl-6 pr-3 pt-4 text-right text-sm font-normal sm:table-cell md:pl-0"
+									class="hidden pl-6 pr-3 pt-4 text-right text-sm font-normal print:table-cell sm:table-cell md:pl-0"
 								>
 									{$t('table.body.subtotal')}
 								</th>
 								<th
 									scope="row"
-									class="pl-4 pr-3 pt-14 text-left text-sm font-normal sm:hidden"
+									class="pl-4 pr-3 pt-14 text-left text-sm font-normal print:hidden sm:hidden"
 								>
 									{$t('table.body.subtotal')}
 								</th>
 								<td
-									class="pl-3 pr-4 pt-14 text-right text-sm sm:pt-4 sm:pr-6 md:pr-0"
+									class="pl-3 pr-4 pt-14 text-right text-sm print:pt-4 sm:pt-4 sm:pr-6 md:pr-0"
 								>
 									<slot name="subtotal" />
 								</td>
@@ -138,13 +140,13 @@
 								<th
 									scope="row"
 									colspan="3"
-									class="hidden pl-6 pr-3 pt-2 text-right text-sm font-normal sm:table-cell md:pl-0"
+									class="hidden pl-6 pr-3 pt-2 text-right text-sm font-normal print:table-cell sm:table-cell md:pl-0"
 								>
 									{$t('table.body.adjustments')}
 								</th>
 								<th
 									scope="row"
-									class="pl-4 pr-3 pt-2 text-left text-sm font-normal sm:hidden"
+									class="pl-4 pr-3 pt-2 text-left text-sm font-normal print:hidden sm:hidden"
 								>
 									{$t('table.body.adjustments')}
 								</th>
@@ -156,13 +158,13 @@
 								<th
 									scope="row"
 									colspan="3"
-									class="hidden pl-6 pr-3 pt-2 text-right text-sm font-semibold text-gray-900 dark:text-gray-300 sm:table-cell md:pl-0"
+									class="hidden pl-6 pr-3 pt-2 text-right text-sm font-semibold text-gray-900 dark:text-gray-300 print:table-cell sm:table-cell md:pl-0"
 								>
 									{$t('table.body.total')}
 								</th>
 								<th
 									scope="row"
-									class="pl-4 pr-3 pt-2 text-left text-sm font-semibold text-gray-900 dark:text-gray-300 sm:hidden"
+									class="pl-4 pr-3 pt-2 text-left text-sm font-semibold text-gray-900 dark:text-gray-300 print:hidden sm:hidden"
 								>
 									{$t('table.body.total')}
 								</th>

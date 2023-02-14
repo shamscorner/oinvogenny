@@ -94,17 +94,21 @@
 			<tr class="border-b border-gray-200 dark:border-gray-600">
 				<td class="py-4 pl-4 pr-3 text-xs sm:pl-6 md:pl-0">
 					<div class="font-medium">{item.description}</div>
-					<div class="mt-0.5 sm:hidden">
+					<div class="mt-0.5 print:hidden sm:hidden">
 						{$t('table.body.quantity-at-price', {
 							quantity: (+item.quantity).toFixed(2),
 							unitPrice: (+item.unitPrice).toFixed(2)
 						})}
 					</div>
 				</td>
-				<td class="hidden py-4 px-3 text-right text-xs sm:table-cell">
+				<td
+					class="hidden py-4 px-3 text-right text-xs print:table-cell sm:table-cell"
+				>
 					{(+item.quantity).toFixed(2)}
 				</td>
-				<td class="hidden py-4 px-3 text-right text-xs sm:table-cell">
+				<td
+					class="hidden py-4 px-3 text-right text-xs print:table-cell sm:table-cell"
+				>
 					${(+item.unitPrice).toFixed(2)}
 				</td>
 				<td class="py-4 pl-3 pr-4 text-right text-xs sm:pr-6 md:pr-0">
