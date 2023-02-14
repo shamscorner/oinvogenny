@@ -460,6 +460,12 @@
 			<tr class="border-b border-gray-200 dark:border-gray-600">
 				<td class="relative py-4 pl-4 pr-3 text-sm sm:pl-6 md:pl-0">
 					<div>
+						<button
+							class="absolute right-0 top-6 z-10 flex h-5 w-5 items-center justify-center rounded-full bg-amber-500 font-semibold text-white transition-colors hover:bg-amber-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 dark:bg-amber-700 dark:focus-visible:ring-amber-700 dark:focus-visible:ring-offset-gray-800"
+							on:click={() => removeItem(itemIdx)}
+						>
+							-
+						</button>
 						<label for="item-description" class="sr-only">
 							{$t('form.service-item.description')}
 						</label>
@@ -471,12 +477,6 @@
 							class="min-w-[200px] rounded-md text-sm sm:min-w-[220px] md:min-w-[280px]"
 							placeholder={$t('form.service-item.description')}
 						/>
-						<button
-							class="absolute right-0 top-6 z-10 flex h-5 w-5 items-center justify-center rounded-full bg-amber-500 font-semibold text-white transition-colors hover:bg-amber-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 dark:bg-amber-700 dark:focus-visible:ring-amber-700 dark:focus-visible:ring-offset-gray-800"
-							on:click={() => removeItem(itemIdx)}
-						>
-							-
-						</button>
 					</div>
 					<!-- small screen only -->
 					<div class="mt-4 flex gap-4 sm:hidden">
