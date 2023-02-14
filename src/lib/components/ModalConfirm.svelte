@@ -7,22 +7,27 @@
 
 	const dispatch = createEventDispatcher();
 
-	export let isOpen = false;
+	let isOpen = false;
+
+	export function toggle() {
+		isOpen = !isOpen;
+		dispatch('toggle');
+	}
 
 	function handlePerformOk() {
-		isOpen = !isOpen;
 		dispatch('confirm-clear');
+		toggle();
 	}
 </script>
 
-<div
-	class="relative z-10"
-	aria-labelledby="modal-title"
-	role="dialog"
-	aria-modal="true"
-	use:teleport={'teleport'}
->
-	{#if isOpen}
+{#if isOpen}
+	<div
+		class="relative z-10"
+		aria-labelledby="modal-title"
+		role="dialog"
+		aria-modal="true"
+		use:teleport={'teleport'}
+	>
 		<!--
 			Background backdrop, show/hide based on modal state.
 			
@@ -85,12 +90,12 @@
 						<ButtonPrimary on:click={handlePerformOk}>
 							{$t('clear')}
 						</ButtonPrimary>
-						<ButtonSecondary on:click={() => (isOpen = false)}>
+						<ButtonSecondary on:click={toggle}>
 							{$t('close')}
 						</ButtonSecondary>
 					</div>
 				</div>
 			</div>
 		</div>
-	{/if}
-</div>
+	</div>
+{/if}

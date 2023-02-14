@@ -21,7 +21,7 @@
 
 	let idxDB: IDBPDatabase<IndexedDBSchemaType> | undefined;
 	let companyLogoInput: HTMLInputElement;
-	let isConfirmModalOpen = false;
+	let confirmModal: ModalConfirm;
 
 	onMount(async () => {
 		scrollToTop();
@@ -591,7 +591,7 @@
 				class="ml-1"
 			/>
 		</LinkPrimary>
-		<ButtonSecondary on:click={() => (isConfirmModalOpen = true)}>
+		<ButtonSecondary on:click={confirmModal.toggle}>
 			<Icon
 				icon="mdi:delete-forever-outline"
 				width="20"
@@ -604,4 +604,4 @@
 	</section>
 </InvoiceSkeleton>
 
-<ModalConfirm isOpen={isConfirmModalOpen} on:confirm-clear={clearFormData} />
+<ModalConfirm bind:this={confirmModal} on:confirm-clear={clearFormData} />
