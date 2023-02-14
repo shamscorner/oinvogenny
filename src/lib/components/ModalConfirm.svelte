@@ -85,10 +85,10 @@
 					</div>
 					<div class="mt-5 gap-4 sm:mt-4 sm:flex sm:flex-row-reverse">
 						<ButtonPrimary on:click={handlePerformOk}>
-							{$t('clear')}
+							<slot name="button-confirm">{$t('ok')}</slot>
 						</ButtonPrimary>
 						<ButtonSecondary on:click={toggle}>
-							{$t('close')}
+							<slot name="button-close">{$t('close')}</slot>
 						</ButtonSecondary>
 					</div>
 				</div>

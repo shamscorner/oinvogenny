@@ -621,4 +621,8 @@
 	</section>
 </InvoiceSkeleton>
 
-<ModalConfirm bind:this={confirmModal} on:confirm-clear={clearFormData} />
+<ModalConfirm bind:this={confirmModal} on:confirm-clear={clearFormData}>
+	<svelte:fragment slot="button-confirm">
+		{$t('clear')}
+	</svelte:fragment>
+</ModalConfirm>
