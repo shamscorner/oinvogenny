@@ -14,6 +14,7 @@
 	import { initIndexDB, type IndexedDBSchemaType } from '$lib/indexDB';
 	import { arrayBufferToFile } from '$lib/helpers';
 	import type { IDBPDatabase } from 'idb';
+	import AppBackground from '$lib/components/AppBackground.svelte';
 
 	let idxDB: IDBPDatabase<IndexedDBSchemaType> | undefined;
 	let isPageLoader = true;
@@ -60,6 +61,8 @@
 		};
 	}
 </script>
+
+<AppBackground />
 
 <div
 	id="overflowed-container"
