@@ -41,13 +41,15 @@
 	</svelte:fragment>
 
 	<svelte:fragment slot="company-logo">
-		<img
-			src={$companyAvatar.avatar}
-			alt={$t('company-logo')}
-			width="96"
-			height="96"
-			class="h-24 w-24 rounded-full object-cover"
-		/>
+		{#if $companyAvatar.avatar}
+			<img
+				src={$companyAvatar.avatar}
+				alt={$t('company-logo')}
+				width="96"
+				height="96"
+				class="h-24 w-24 rounded-full object-cover"
+			/>
+		{/if}
 	</svelte:fragment>
 
 	<svelte:fragment slot="submitted-on">
