@@ -13,7 +13,8 @@
 		invoiceData,
 		invoiceItemsTotal,
 		invoiceItemsSubTotal,
-		companyAvatar
+		companyAvatar,
+		resetInvoiceData
 	} from '$lib/store';
 	import UploadIcon from '$lib/assets/upload-icon.svg';
 	import ModalConfirm from '$lib/components/ModalConfirm.svelte';
@@ -64,6 +65,24 @@
 		}
 	}
 
+	function saveCompanyAvatar({
+		avatar,
+		type
+	}: {
+		avatar: ArrayBuffer | string;
+		type: string;
+	}) {
+		if (!idxDB) return;
+		const idxDBTransaction = idxDB.transaction('companyAvatar', 'readwrite');
+		idxDBTransaction.store.put(
+			{
+				avatar,
+				type
+			},
+			CompanyAvatarIdxDBKey
+		);
+	}
+
 	function uploadCompanyLogo(event: Event) {
 		uploadFile(event, (e, fileType) => {
 			if (!e.target) return;
@@ -77,19 +96,17 @@
 				type: fileType
 			};
 
-			const idxDBTransaction = idxDB.transaction('companyAvatar', 'readwrite');
-			idxDBTransaction.store.put(
-				{
-					avatar: logoResult,
-					type: fileType
-				},
-				CompanyAvatarIdxDBKey
-			);
+			saveCompanyAvatar({
+				avatar: logoResult,
+				type: fileType
+			});
 		});
 	}
 
 	function clearFormData() {
-		console.log('clear form data');
+		scrollToTop();
+		resetInvoiceData();
+		saveCompanyAvatar({ avatar: '', type: '' });
 	}
 </script>
 

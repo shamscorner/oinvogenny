@@ -52,6 +52,7 @@
 			.transaction('companyAvatar', 'readonly')
 			.store.get(CompanyAvatarIdxDBKey);
 		if (!existingData) return;
+		if (!existingData.avatar) return;
 
 		$companyAvatar = {
 			avatar: arrayBufferToFile(existingData.avatar, existingData.type),
