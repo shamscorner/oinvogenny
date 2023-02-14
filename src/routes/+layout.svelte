@@ -69,7 +69,7 @@
 	>
 		<a href="/">
 			<Icon
-				icon="mdi-light:home"
+				icon="mdi:home"
 				width="28"
 				height="28"
 				aria-hidden="true"
@@ -114,6 +114,11 @@
 		</div>
 	</header>
 	<slot />
+</div>
+
+<div>
+	<div id="teleport" />
+	<slot name="teleport" />
 </div>
 
 {#if isPageLoader}

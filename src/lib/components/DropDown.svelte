@@ -14,7 +14,7 @@
 	>
 		{value}
 		<Icon
-			icon="mdi-light:chevron-down"
+			icon="mdi:chevron-down"
 			width="20"
 			height="20"
 			aria-hidden="true"

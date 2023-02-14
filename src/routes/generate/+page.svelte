@@ -16,9 +16,12 @@
 		companyAvatar
 	} from '$lib/store';
 	import UploadIcon from '$lib/assets/upload-icon.svg';
+	import ModalConfirm from '$lib/components/ModalConfirm.svelte';
+	import ButtonSecondary from '$lib/components/buttons/ButtonSecondary.svelte';
 
 	let idxDB: IDBPDatabase<IndexedDBSchemaType> | undefined;
 	let companyLogoInput: HTMLInputElement;
+	let isConfirmModalOpen = false;
 
 	onMount(async () => {
 		scrollToTop();
@@ -83,6 +86,10 @@
 				CompanyAvatarIdxDBKey
 			);
 		});
+	}
+
+	function clearFormData() {
+		console.log('clear form data');
 	}
 </script>
 
@@ -573,16 +580,28 @@
 		</div>
 	</svelte:fragment>
 
-	<section class="mt-8 text-center">
+	<section class="mt-8 flex flex-row-reverse justify-center gap-4 text-center">
 		<LinkPrimary href="/preview">
 			{$t('preview')}
 			<Icon
-				icon="mdi-light:chevron-double-right"
+				icon="mdi:chevron-double-right"
 				width="20"
 				height="20"
 				aria-hidden="true"
 				class="ml-1"
 			/>
 		</LinkPrimary>
+		<ButtonSecondary on:click={() => (isConfirmModalOpen = true)}>
+			<Icon
+				icon="mdi:delete-forever-outline"
+				width="20"
+				height="20"
+				aria-hidden="true"
+				class="mr-1"
+			/>
+			{$t('clear')}
+		</ButtonSecondary>
 	</section>
 </InvoiceSkeleton>
+
+<ModalConfirm isOpen={isConfirmModalOpen} on:confirm-clear={clearFormData} />

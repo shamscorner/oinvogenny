@@ -141,7 +141,7 @@
 	<section class="mt-8 flex items-center justify-center gap-5 print:hidden">
 		<LinkSecondary href="/generate">
 			<Icon
-				icon="mdi-light:chevron-double-left"
+				icon="mdi:chevron-double-left"
 				width="20"
 				height="20"
 				aria-hidden="true"
