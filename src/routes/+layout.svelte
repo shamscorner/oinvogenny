@@ -62,12 +62,12 @@
 	}
 </script>
 
-<AppBackground />
-
 <div
 	id="overflowed-container"
-	class="h-screen overflow-y-auto pb-16 print:pb-0"
+	class="relative h-screen overflow-x-hidden pb-16 print:pb-0"
 >
+	<AppBackground />
+
 	<header
 		class="mx-auto mt-4 flex max-w-3xl items-center justify-between gap-5 px-4 print:hidden md:px-0"
 	>

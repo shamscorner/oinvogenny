@@ -434,7 +434,7 @@
 					type="date"
 					name="work-from-date"
 					id="work-from-date"
-					class="max-w-[180px] rounded-md"
+					class="w-[180px] rounded-md"
 				/>
 			</div>
 
@@ -449,7 +449,7 @@
 					type="date"
 					name="work-to-date"
 					id="work-to-date"
-					class="max-w-[180px] rounded-md"
+					class="w-[180px] rounded-md"
 				/>
 			</div>
 		</div>
@@ -474,7 +474,7 @@
 							type="text"
 							name="item-description"
 							id="item-description"
-							class="min-w-[200px] rounded-md text-sm sm:min-w-[220px] md:min-w-[280px]"
+							class="min-w-[170px] rounded-md text-sm sm:min-w-[220px] md:min-w-[280px]"
 							placeholder={$t('form.service-item.description')}
 						/>
 					</div>
