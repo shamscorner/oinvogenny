@@ -153,4 +153,10 @@
 			{$t('print')}
 		</ButtonPrimary>
 	</section>
+
+	<section class="mt-10 print:hidden">
+		<p class="mx-auto max-w-lg text-center text-xs text-gray-400">
+			{$t('print-customization-note')}
+		</p>
+	</section>
 </InvoiceSkeleton>

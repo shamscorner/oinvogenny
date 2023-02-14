@@ -56,5 +56,7 @@
 	"form.service-item.quantity": "40.0",
 	"form.service-item.unit-price": "55.00",
 	"form.service-item.adjustments": "0.00",
-	"form.service-item.note": "Specialized software is used to record the work hours & can be sent if necessary. With this, I confirm that all the information mentioned above is correct & validated."
+	"form.service-item.note": "Specialized software is used to record the work hours & can be sent if necessary. With this, I confirm that all the information mentioned above is correct & validated.",
+
+	"print-customization-note": "You can change the margin, scale/zoom, paper size, headers & footers, etc., on the print dialog. So feel free to customize it according to your needs."
 }
