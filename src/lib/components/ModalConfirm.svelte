@@ -55,14 +55,14 @@
 					To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
 				-->
 				<div
-					class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6"
+					class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all dark:bg-gray-800 dark:text-gray-200 sm:my-8 sm:w-full sm:max-w-lg sm:p-6"
 				>
 					<div class="sm:flex sm:items-start">
 						<div
-							class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
+							class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 dark:bg-gray-900 sm:mx-0 sm:h-10 sm:w-10"
 						>
 							<svg
-								class="h-6 w-6 text-red-600"
+								class="h-6 w-6 text-red-500"
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
 								viewBox="0 0 24 24"
@@ -78,10 +78,7 @@
 							</svg>
 						</div>
 						<div class="mt-3 text-center sm:mt-1.5 sm:ml-4 sm:text-left">
-							<h3
-								class="text-lg font-medium leading-6 text-gray-900"
-								id="modal-title"
-							>
+							<h3 class="text-lg font-medium leading-6" id="modal-title">
 								{$t('are-you-sure')}
 							</h3>
 						</div>
