@@ -34,8 +34,10 @@
 		</p>
 		<p>{$invoiceData.yourCompanyInfo.name}</p>
 		<p>
-			{$invoiceData.yourCompanyInfo.city}, {$invoiceData.yourCompanyInfo
-				.postalCode}
+			{$invoiceData.yourCompanyInfo.city
+				? `${$invoiceData.yourCompanyInfo.city}, `
+				: ''}
+			{$invoiceData.yourCompanyInfo.postalCode}
 		</p>
 		<p>{$invoiceData.yourCompanyInfo.country}</p>
 	</svelte:fragment>
