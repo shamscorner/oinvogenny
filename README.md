@@ -1,5 +1,7 @@
 # oinvogenny
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f8c0fe15-cac6-483e-a183-c1b219ac4a74/deploy-status)](https://app.netlify.com/sites/oinvogenny/deploys)
+
 This is a very simple, clean, awesome-looking, open-source, one-click invoice generator application for freelancers & remote job holders to manage payments. All the data are saved on the client's browser. Nothing is saved anywhere so it is secure & safe.
 
 Technical Stack:
