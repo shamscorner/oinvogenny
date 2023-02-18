@@ -118,6 +118,78 @@
 		</div>
 	</header>
 	<slot />
+
+	<footer class="mx-auto mt-8 max-w-3xl py-12  px-4 print:hidden md:px-0">
+		<div class="md:flex md:items-center md:justify-between">
+			<div class="flex justify-center space-x-6 md:order-2">
+				<a
+					href="https://twitter.com/shamscorner"
+					target="_blank"
+					rel="noreferrer"
+					class="text-gray-400 hover:text-gray-500"
+				>
+					<span class="sr-only">Twitter</span>
+					<Icon
+						icon="mdi:twitter"
+						width="24"
+						height="24"
+						aria-hidden="true"
+						class="ml-1 text-gray-400"
+					/>
+				</a>
+
+				<a
+					href="https://github.com/shamscorner/oinvogenny"
+					target="_blank"
+					rel="noreferrer"
+					class="text-gray-400 hover:text-gray-500"
+				>
+					<span class="sr-only">GitHub</span>
+					<Icon
+						icon="mdi:github"
+						width="24"
+						height="24"
+						aria-hidden="true"
+						class="ml-1 text-gray-400"
+					/>
+				</a>
+			</div>
+			<div class="mt-8 md:order-1 md:mt-0">
+				<p class="text-center text-xs leading-5 text-gray-500">
+					&copy; 2023 shamscorner, All rights reserved.
+				</p>
+			</div>
+		</div>
+		<p class="text-xs leading-5 text-gray-500">
+			This site is built with
+			<a
+				href="https://kit.svelte.dev/"
+				target="_blank"
+				rel="noreferrer"
+				class="underline"
+			>
+				SvelteKit
+			</a>
+			and
+			<a
+				href="https://tailwindcss.com/"
+				target="_blank"
+				rel="noreferrer"
+				class="underline"
+			>
+				Tailwind CSS.
+			</a>
+			Deployed at
+			<a
+				href="https://www.netlify.com/"
+				target="_blank"
+				rel="noreferrer"
+				class="underline"
+			>
+				Netlify.
+			</a>
+		</p>
+	</footer>
 </div>
 
 <div>
