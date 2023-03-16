@@ -2,8 +2,15 @@
 	"editor.formatOnSave": true,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"[svelte]": {
-		"editor.defaultFormatter": "svelte.svelte-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
+	"prettier.documentSelectors": ["**/*.svelte"],
 	"eslint.validate": ["javascript", "typescript", "svelte"],
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"editor.quickSuggestions": {
+		"strings": true
+	},
 	"cSpell.words": ["iconify", "IDBP", "oinvogenny"]
 }
