@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ButtonPrimary from './buttons/ButtonPrimary.svelte';
 	import { teleport } from '$lib/helpers';
-	import { t } from '$lib/i18n';
+	import LL from '$lib/i18n/i18n-svelte';
 	import { createEventDispatcher } from 'svelte';
 	import ButtonSecondary from './buttons/ButtonSecondary.svelte';
 
@@ -30,7 +30,7 @@
 	>
 		<!--
 			Background backdrop, show/hide based on modal state.
-			
+
 			Entering: "ease-out duration-300"
 			From: "opacity-0"
 			To: "opacity-100"
@@ -46,7 +46,7 @@
 			>
 				<!--
 					Modal panel, show/hide based on modal state.
-					
+
 					Entering: "ease-out duration-300"
 					From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
 					To: "opacity-100 translate-y-0 sm:scale-100"
@@ -79,16 +79,16 @@
 						</div>
 						<div class="mt-3 text-center sm:mt-1.5 sm:ml-4 sm:text-left">
 							<h3 class="text-lg font-medium leading-6" id="modal-title">
-								{$t('are-you-sure')}
+								{$LL.common.areYouSure()}
 							</h3>
 						</div>
 					</div>
 					<div class="mt-5 gap-4 sm:mt-4 sm:flex sm:flex-row-reverse">
 						<ButtonPrimary on:click={handlePerformOk}>
-							<slot name="button-confirm">{$t('ok')}</slot>
+							<slot name="button-confirm">{$LL.common.ok()}</slot>
 						</ButtonPrimary>
 						<ButtonSecondary on:click={toggle}>
-							<slot name="button-close">{$t('close')}</slot>
+							<slot name="button-close">{$LL.common.close()}</slot>
 						</ButtonSecondary>
 					</div>
 				</div>

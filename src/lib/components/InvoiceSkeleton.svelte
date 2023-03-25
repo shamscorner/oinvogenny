@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import LL from '$lib/i18n/i18n-svelte';
 
 	export let isNoteAvailable = true;
 </script>
@@ -25,7 +25,7 @@
 		<main class="mt-3">
 			<section>
 				<h1 class="text-3xl font-bold text-blue-500">
-					{$t('invoice')}
+					{$LL.common.invoice()}
 				</h1>
 				<slot name="submitted-on" />
 
@@ -36,7 +36,7 @@
 						<h3
 							class="mb-1 text-base font-semibold text-gray-600 dark:text-gray-300"
 						>
-							{$t('invoice-for')}
+							{$LL.common.invoiceFor()}
 						</h3>
 						<slot name="invoice-for" />
 					</div>
@@ -45,7 +45,7 @@
 						<h3
 							class="mb-1 text-base font-semibold text-gray-600 dark:text-gray-300"
 						>
-							{$t('invoice-from')}
+							{$LL.common.invoiceFrom()}
 						</h3>
 						<slot name="invoice-from" />
 					</div>
@@ -55,7 +55,7 @@
 							<h3
 								class="mb-1 text-base font-semibold text-gray-600 dark:text-gray-300"
 							>
-								{$t('invoice')} #
+								{$LL.common.invoice()} #
 							</h3>
 							<slot name="invoice-number" />
 						</div>
@@ -63,7 +63,7 @@
 							<h3
 								class="mb-1 text-base font-semibold text-gray-600 dark:text-gray-300"
 							>
-								{$t('due-date')}
+								{$LL.common.dueDate()}
 							</h3>
 							<slot name="due-date" />
 						</div>
@@ -86,29 +86,29 @@
 									scope="col"
 									class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-blue-500 sm:pl-6 md:pl-0"
 								>
-									{$t('table.head.description')}
+									{$LL.invoicesTable.head.description()}
 								</th>
 								<th
 									scope="col"
 									class="hidden py-3.5 px-3 text-right text-sm font-semibold text-blue-500 print:table-cell sm:table-cell"
 								>
-									{$t('table.head.qty', {
-										quantity: $t('hours')
+									{$LL.invoicesTable.head.qty({
+										quantity: $LL.common.hours()
 									})}
 								</th>
 								<th
 									scope="col"
 									class="hidden py-3.5 px-3 text-right text-sm font-semibold text-blue-500 print:table-cell sm:table-cell"
 								>
-									{$t('table.head.unit-price', {
-										unit: $t('per-hour')
+									{$LL.invoicesTable.head.unitPrice({
+										unit: $LL.common.perHour()
 									})}
 								</th>
 								<th
 									scope="col"
 									class="py-3.5 pl-3 pr-4 text-right text-sm font-semibold text-blue-500 sm:pr-6 md:pr-0"
 								>
-									{$t('table.head.total-price')}
+									{$LL.invoicesTable.head.totalPrice()}
 								</th>
 							</tr>
 						</thead>
@@ -122,13 +122,13 @@
 									colspan="3"
 									class="hidden pl-6 pr-3 pt-4 text-right text-sm font-normal print:table-cell sm:table-cell md:pl-0"
 								>
-									{$t('table.body.subtotal')}
+									{$LL.invoicesTable.body.subtotal()}
 								</th>
 								<th
 									scope="row"
 									class="pl-4 pr-3 pt-14 text-left text-sm font-normal print:hidden sm:hidden"
 								>
-									{$t('table.body.subtotal')}
+									{$LL.invoicesTable.body.subtotal()}
 								</th>
 								<td
 									class="pl-3 pr-4 pt-14 text-right text-sm print:pt-4 sm:pt-4 sm:pr-6 md:pr-0"
@@ -142,13 +142,13 @@
 									colspan="3"
 									class="hidden pl-6 pr-3 pt-2 text-right text-sm font-normal print:table-cell sm:table-cell md:pl-0"
 								>
-									{$t('table.body.adjustments')}
+									{$LL.invoicesTable.body.adjustments()}
 								</th>
 								<th
 									scope="row"
 									class="pl-4 pr-3 pt-2 text-left text-sm font-normal print:hidden sm:hidden"
 								>
-									{$t('table.body.adjustments')}
+									{$LL.invoicesTable.body.adjustments()}
 								</th>
 								<td class="pl-3 pr-4 pt-2 text-right text-sm sm:pr-6 md:pr-0">
 									<slot name="adjustments" />
@@ -160,13 +160,13 @@
 									colspan="3"
 									class="hidden pl-6 pr-3 pt-2 text-right text-sm font-semibold text-gray-900 dark:text-gray-300 print:table-cell sm:table-cell md:pl-0"
 								>
-									{$t('table.body.total')}
+									{$LL.invoicesTable.body.total()}
 								</th>
 								<th
 									scope="row"
 									class="pl-4 pr-3 pt-2 text-left text-sm font-semibold text-gray-900 dark:text-gray-300 print:hidden sm:hidden"
 								>
-									{$t('table.body.total')}
+									{$LL.invoicesTable.body.total()}
 								</th>
 								<td
 									class="pl-3 pr-4 pt-2 text-right text-base font-semibold text-pink-400 sm:pr-6 md:pr-0"
@@ -183,7 +183,7 @@
 		<footer class="mt-4">
 			{#if isNoteAvailable}
 				<h3 class="text-sm text-gray-500 dark:text-gray-300">
-					{$t('note')}:
+					{$LL.common.note()}:
 				</h3>
 				<slot name="note" />
 			{/if}

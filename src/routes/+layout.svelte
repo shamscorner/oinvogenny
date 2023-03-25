@@ -5,9 +5,9 @@
 	import PageLoader from '$lib/components/PageLoader.svelte';
 	import ThemeSwitch from '$lib/components/ThemeSwitch.svelte';
 	import DropDown from '$lib/components/DropDown.svelte';
-	import { locale, locales, saveLang } from '$lib/i18n';
-	import type { LocaleType } from '$lib/i18n/translations';
-	import { t } from '$lib/i18n';
+	import LL, { setLocale, locale } from '$lib/i18n/i18n-svelte';
+	import { locales } from '$lib/i18n/i18n-util';
+	import type { Locales } from '$lib/i18n/i18n-types';
 	import { page } from '$app/stores';
 	import { invoiceData, companyAvatar } from '$lib/store';
 	import { InvoiceDataIdxDBKey, CompanyAvatarIdxDBKey } from '$lib/constants';
@@ -15,6 +15,12 @@
 	import { arrayBufferToFile } from '$lib/helpers';
 	import type { IDBPDatabase } from 'idb';
 	import AppBackground from '$lib/components/AppBackground.svelte';
+	import type { LayoutData } from './$types';
+	import { loadLocaleAsync } from '$lib/i18n/i18n-util.async';
+
+	export let data: LayoutData;
+	// at the very top, set the locale before you access the store and before the actual rendering takes place
+	setLocale(data.locale);
 
 	let idxDB: IDBPDatabase<IndexedDBSchemaType> | undefined;
 	let isPageLoader = true;
@@ -30,9 +36,10 @@
 		loadExistingCompanyAvatar();
 	});
 
-	function setLocaleLang(l: LocaleType) {
-		$locale = l;
-		saveLang(l);
+	async function setLocaleLang(l: Locales) {
+		await loadLocaleAsync(l);
+		setLocale(l);
+		localStorage.setItem('lang', l);
 	}
 
 	async function loadExistingInvoiceData() {
@@ -88,7 +95,7 @@
 					? 'text-pink-500'
 					: 'text-gray-500 dark:text-gray-400'}"
 			>
-				{$t('generate')}
+				{$LL.common.generate()}
 			</a>
 			<a
 				href="/preview"
@@ -96,7 +103,7 @@
 					? 'text-pink-500'
 					: 'text-gray-500 dark:text-gray-400'}"
 			>
-				{$t('preview')}
+				{$LL.common.preview()}
 			</a>
 		</nav>
 

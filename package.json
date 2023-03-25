@@ -6,8 +6,8 @@
 	"author": "Shamim Hossain ('https://twitter.com/shamscorner')",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
+		"dev": "npm-run-all --parallel vite:dev typesafe-i18n",
+		"vite:dev": "vite dev",
 		"preview": "vite preview",
 		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -16,7 +16,8 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
 		"prepare": "husky install",
-		"configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
+		"configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
+		"typesafe-i18n": "typesafe-i18n"
 	},
 	"devDependencies": {
 		"@iconify/svelte": "^3.1.0",
@@ -32,6 +33,7 @@
 		"eslint-plugin-svelte3": "^4.0.0",
 		"husky": "^8.0.0",
 		"lint-staged": "^13.2.0",
+		"npm-run-all": "^4.1.5",
 		"postcss": "^8.4.21",
 		"prettier": "^2.8.4",
 		"prettier-plugin-svelte": "^2.8.1",
@@ -40,6 +42,7 @@
 		"svelte-check": "^3.0.1",
 		"tailwindcss": "^3.2.6",
 		"tslib": "^2.4.1",
+		"typesafe-i18n": "^5.24.2",
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0",
 		"vitest": "^0.25.3"

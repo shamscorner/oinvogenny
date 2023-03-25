@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { t } from '$lib/i18n';
+	import LL from '$lib/i18n/i18n-svelte';
 
 	let darkMode = true;
 
@@ -36,7 +36,7 @@
 	aria-checked="false"
 	on:click={handleSwitchDarkMode}
 >
-	<span class="sr-only">{$t('change-theme')}</span>
+	<span class="sr-only">{$LL.common.changeTheme()}</span>
 	<span
 		class="pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-gray-50 shadow ring-0 transition duration-200 ease-in-out dark:bg-gray-700 {darkMode
 			? 'translate-x-5'

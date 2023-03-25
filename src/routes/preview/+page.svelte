@@ -5,7 +5,7 @@
 	import LinkSecondary from '$lib/components/links/LinkSecondary.svelte';
 	import { formatDate, scrollToTop } from '$lib/helpers';
 	import Icon from '@iconify/svelte';
-	import { t } from '$lib/i18n';
+	import LL from '$lib/i18n/i18n-svelte';
 	import {
 		invoiceData,
 		invoiceItemsSubTotal,
@@ -23,8 +23,11 @@
 </script>
 
 <svelte:head>
-	<title>{$t('page-title.preview')}</title>
-	<meta name="description" content={$t('page-meta.description.preview')} />
+	<title>{$LL.pageSpecifics.preview.title()}</title>
+	<meta
+		name="description"
+		content={$LL.pageSpecifics.preview.meta.description()}
+	/>
 </svelte:head>
 
 <InvoiceSkeleton isNoteAvailable={$invoiceData.note !== ''}>
@@ -46,7 +49,7 @@
 		{#if $companyAvatar.avatar}
 			<img
 				src={$companyAvatar.avatar}
-				alt={$t('company-logo')}
+				alt={$LL.common.companyLogo()}
 				width="96"
 				height="96"
 				class="h-24 w-24 rounded-full object-cover"
@@ -56,7 +59,7 @@
 
 	<svelte:fragment slot="submitted-on">
 		<h2 class="text-lg font-semibold text-pink-400">
-			{$t('submitted-on', { date: formatDate($invoiceData.submittedOn) })}
+			{$LL.common.submittedOn({ date: formatDate($invoiceData.submittedOn) })}
 		</h2>
 	</svelte:fragment>
 
@@ -82,7 +85,7 @@
 
 	<svelte:fragment slot="work-date-for">
 		<p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
-			{$t('work-for-date')}
+			{$LL.common.workForDate()}
 			<time datetime="2022-08-01" class="text-pink-400">
 				{formatDate($invoiceData.workDateInterval.fromDate)}
 			</time>
@@ -99,7 +102,7 @@
 				<td class="py-4 pl-4 pr-3 text-xs sm:pl-6 md:pl-0">
 					<div class="font-medium">{item.description}</div>
 					<div class="mt-0.5 print:hidden sm:hidden">
-						{$t('table.body.quantity-at-price', {
+						{$LL.invoicesTable.body.quantityAtPrice({
 							quantity: (+item.quantity).toFixed(2),
 							unitPrice: (+item.unitPrice).toFixed(2)
 						})}
@@ -151,16 +154,16 @@
 				aria-hidden="true"
 				class="mr-2"
 			/>
-			{$t('edit')}
+			{$LL.common.edit()}
 		</LinkSecondary>
 		<ButtonPrimary on:click={printInvoice}>
-			{$t('print')}
+			{$LL.common.print()}
 		</ButtonPrimary>
 	</section>
 
 	<section class="mt-10 print:hidden">
 		<p class="mx-auto max-w-lg text-center text-xs text-gray-400">
-			{$t('print-customization-note')}
+			{$LL.printCustomizationNote()}
 		</p>
 	</section>
 </InvoiceSkeleton>

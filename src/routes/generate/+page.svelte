@@ -5,7 +5,7 @@
 	import Icon from '@iconify/svelte';
 	import { arrayBufferToFile, scrollToTop, uploadFile } from '$lib/helpers';
 	import { onMount } from 'svelte';
-	import { t } from '$lib/i18n';
+	import LL from '$lib/i18n/i18n-svelte';
 	import { initIndexDB, type IndexedDBSchemaType } from '$lib/indexDB';
 	import type { IDBPDatabase } from 'idb';
 	import { InvoiceDataIdxDBKey, CompanyAvatarIdxDBKey } from '$lib/constants';
@@ -111,22 +111,25 @@
 </script>
 
 <svelte:head>
-	<title>{$t('page-title.generate')}</title>
-	<meta name="description" content={$t('page-meta.description.generate')} />
+	<title>{$LL.pageSpecifics.generator.title()}</title>
+	<meta
+		name="description"
+		content={$LL.pageSpecifics.generator.meta.description()}
+	/>
 </svelte:head>
 
 <InvoiceSkeleton>
 	<svelte:fragment slot="company-info">
 		<fieldset>
 			<legend class="sr-only">
-				{$t('form.your-company-name')}
+				{$LL.invoiceForm.yourCompany.name()}
 			</legend>
 			<div
 				class="mt-1 -space-y-px rounded-md bg-white shadow-sm dark:bg-gray-800"
 			>
 				<div>
 					<label for="company-name" class="sr-only">
-						{$t('form.your-company-name')}
+						{$LL.invoiceForm.yourCompany.name()}
 					</label>
 					<input
 						bind:value={$invoiceData.yourCompanyInfo.companyName}
@@ -134,53 +137,53 @@
 						name="company-name"
 						id="company-name"
 						class="rounded-none rounded-t-md font-semibold"
-						placeholder={$t('form.your-company-name')}
+						placeholder={$LL.invoiceForm.yourCompany.name()}
 						autocomplete="organization"
 					/>
 				</div>
 				<div>
 					<label for="your-name" class="sr-only">
-						{$t('form.your-name')}
+						{$LL.invoiceForm.yourName()}
 					</label>
 					<input
 						bind:value={$invoiceData.yourCompanyInfo.name}
 						type="text"
 						name="your-name"
 						id="your-name"
-						placeholder={$t('form.your-name')}
+						placeholder={$LL.invoiceForm.yourName()}
 						autocomplete="name"
 					/>
 				</div>
 				<div class="flex -space-x-px">
 					<div class="w-1/2 min-w-0 flex-1">
 						<label for="company-city" class="sr-only">
-							{$t('form.your-company-city.sr-only')}
+							{$LL.invoiceForm.yourCompany.srOnly.city()}
 						</label>
 						<input
 							bind:value={$invoiceData.yourCompanyInfo.city}
 							type="text"
 							name="company-city"
-							placeholder={$t('form.your-company-city')}
+							placeholder={$LL.invoiceForm.yourCompany.city()}
 							autocomplete="street-address"
 						/>
 					</div>
 					<div class="min-w-0 flex-1">
 						<label for="company-postal-code" class="sr-only">
-							{$t('form.your-company-postal-code.sr-only')}
+							{$LL.invoiceForm.yourCompany.srOnly.postalCode()}
 						</label>
 						<input
 							bind:value={$invoiceData.yourCompanyInfo.postalCode}
 							type="text"
 							name="company-postal-code"
 							id="company-postal-code"
-							placeholder={$t('form.your-company-postal-code')}
+							placeholder={$LL.invoiceForm.yourCompany.postalCode()}
 							autocomplete="postal-code"
 						/>
 					</div>
 				</div>
 				<div>
 					<label for="card-number" class="sr-only">
-						{$t('form.your-company-country.sr-only')}
+						{$LL.invoiceForm.yourCompany.srOnly.country()}
 					</label>
 					<input
 						bind:value={$invoiceData.yourCompanyInfo.country}
@@ -188,7 +191,7 @@
 						name="card-number"
 						id="card-number"
 						class="rounded-none rounded-b-md"
-						placeholder={$t('form.your-company-country')}
+						placeholder={$LL.invoiceForm.yourCompany.country()}
 						autocomplete="country-name"
 					/>
 				</div>
@@ -199,7 +202,7 @@
 	<svelte:fragment slot="company-logo">
 		<div class="flex-shrink-0">
 			<label for="company-logo" class="sr-only">
-				{$t('upload-logo')}
+				{$LL.common.uploadLogo()}
 			</label>
 			<button
 				type="button"
@@ -211,7 +214,7 @@
 				{#if $companyAvatar.avatar}
 					<img
 						src={$companyAvatar.avatar}
-						alt={$t('company-logo')}
+						alt={$LL.common.companyLogo()}
 						width="96"
 						height="96"
 						class="h-24 w-24 rounded-full object-cover"
@@ -219,7 +222,7 @@
 				{:else}
 					<img
 						src={UploadIcon}
-						alt={$t('upload-logo')}
+						alt={$LL.common.uploadLogo()}
 						width="96"
 						height="96"
 					/>
@@ -243,7 +246,7 @@
 				for="submitted-on"
 				class="flex-shrink-0 text-lg font-semibold text-pink-500"
 			>
-				{$t('submitted-on', { date: '' })}
+				{$LL.common.submittedOn({ date: '' })}
 			</label>
 			<input
 				bind:value={$invoiceData.submittedOn}
@@ -258,14 +261,14 @@
 	<svelte:fragment slot="invoice-for">
 		<fieldset>
 			<legend class="sr-only">
-				{$t('form.invoice-for')}
+				{$LL.invoiceForm.toAddress.title()}
 			</legend>
 			<div
 				class="mt-1 -space-y-px rounded-md bg-white shadow-sm dark:bg-gray-800"
 			>
 				<div>
 					<label for="invoice-for-name" class="sr-only">
-						{$t('form.invoice-for.name')}
+						{$LL.invoiceForm.toAddress.name()}
 					</label>
 					<input
 						bind:value={$invoiceData.invoiceFor.name}
@@ -273,39 +276,39 @@
 						name="invoice-for-name"
 						id="invoice-for-name"
 						class="rounded-none rounded-t-md"
-						placeholder={$t('form.invoice-for.name')}
+						placeholder={$LL.invoiceForm.toAddress.name()}
 						autocomplete="organization"
 					/>
 				</div>
 				<div>
 					<label for="invoice-for-address" class="sr-only">
-						{$t('form.invoice-for.address')}
+						{$LL.invoiceForm.toAddress.address()}
 					</label>
 					<input
 						bind:value={$invoiceData.invoiceFor.address}
 						type="text"
 						name="invoice-for-address"
 						id="invoice-for-address"
-						placeholder={$t('form.invoice-for.address')}
+						placeholder={$LL.invoiceForm.toAddress.address()}
 						autocomplete="street-address"
 					/>
 				</div>
 				<div>
 					<label for="invoice-for-postal-code" class="sr-only">
-						{$t('form.invoice-for.postal-code')}
+						{$LL.invoiceForm.toAddress.postalCode()}
 					</label>
 					<input
 						bind:value={$invoiceData.invoiceFor.postalCode}
 						type="text"
 						name="invoice-for-postal-code"
 						id="invoice-for-postal-code"
-						placeholder={$t('form.invoice-for.postal-code')}
+						placeholder={$LL.invoiceForm.toAddress.postalCode()}
 						autocomplete="postal-code"
 					/>
 				</div>
 				<div>
 					<label for="invoice-for-country" class="sr-only">
-						{$t('form.invoice-for.country')}
+						{$LL.invoiceForm.toAddress.country()}
 					</label>
 					<input
 						bind:value={$invoiceData.invoiceFor.country}
@@ -313,7 +316,7 @@
 						name="invoice-for-country"
 						id="invoice-for-country"
 						class="rounded-none rounded-b-md"
-						placeholder={$t('form.invoice-for.country')}
+						placeholder={$LL.invoiceForm.toAddress.country()}
 						autocomplete="country-name"
 					/>
 				</div>
@@ -324,14 +327,14 @@
 	<svelte:fragment slot="invoice-from">
 		<fieldset>
 			<legend class="sr-only">
-				{$t('form.invoice-from')}
+				{$LL.invoiceForm.fromAddress.title()}
 			</legend>
 			<div
 				class="mt-1 -space-y-px rounded-md bg-white shadow-sm dark:bg-gray-800"
 			>
 				<div>
 					<label for="invoice-from-name" class="sr-only">
-						{$t('form.invoice-from.name')}
+						{$LL.invoiceForm.fromAddress.name()}
 					</label>
 					<input
 						bind:value={$invoiceData.invoiceFrom.name}
@@ -339,39 +342,39 @@
 						name="invoice-from-name"
 						id="invoice-from-name"
 						class="rounded-none rounded-t-md"
-						placeholder={$t('form.invoice-from.name')}
+						placeholder={$LL.invoiceForm.fromAddress.name()}
 						autocomplete="organization"
 					/>
 				</div>
 				<div>
 					<label for="invoice-from-address" class="sr-only">
-						{$t('form.invoice-from.address')}
+						{$LL.invoiceForm.fromAddress.address()}
 					</label>
 					<input
 						bind:value={$invoiceData.invoiceFrom.address}
 						type="text"
 						name="invoice-from-address"
 						id="invoice-from-address"
-						placeholder={$t('form.invoice-from.address')}
+						placeholder={$LL.invoiceForm.fromAddress.address()}
 						autocomplete="street-address"
 					/>
 				</div>
 				<div>
 					<label for="invoice-from-postal-code" class="sr-only">
-						{$t('form.invoice-from.postal-code')}
+						{$LL.invoiceForm.fromAddress.postalCode()}
 					</label>
 					<input
 						bind:value={$invoiceData.invoiceFrom.postalCode}
 						type="text"
 						name="invoice-from-postal-code"
 						id="invoice-from-postal-code"
-						placeholder={$t('form.invoice-from.postal-code')}
+						placeholder={$LL.invoiceForm.fromAddress.postalCode()}
 						autocomplete="postal-code"
 					/>
 				</div>
 				<div>
 					<label for="invoice-from-country" class="sr-only">
-						{$t('form.invoice-from.country')}
+						{$LL.invoiceForm.fromAddress.country()}
 					</label>
 					<input
 						bind:value={$invoiceData.invoiceFrom.country}
@@ -379,7 +382,7 @@
 						name="invoice-from-country"
 						id="invoice-from-country"
 						class="rounded-none rounded-b-md"
-						placeholder={$t('form.invoice-from.country')}
+						placeholder={$LL.invoiceForm.fromAddress.country()}
 						autocomplete="country-name"
 					/>
 				</div>
@@ -390,7 +393,7 @@
 	<svelte:fragment slot="invoice-number">
 		<div>
 			<label for="invoice-number" class="sr-only">
-				{$t('form.invoice-number.sr-only')}
+				{$LL.invoiceForm.srOnly.invoiceNumber()}
 			</label>
 			<input
 				bind:value={$invoiceData.invoiceNumber}
@@ -398,7 +401,7 @@
 				name="invoice-number"
 				id="invoice-number"
 				class="mt-2 rounded-md"
-				placeholder={$t('form.invoice-number')}
+				placeholder={$LL.invoiceForm.invoiceNumber()}
 				autocomplete="country-name"
 			/>
 		</div>
@@ -407,7 +410,7 @@
 	<svelte:fragment slot="due-date">
 		<div>
 			<label for="due-date" class="sr-only">
-				{$t('due-date')}
+				{$LL.common.dueDate()}
 			</label>
 			<input
 				bind:value={$invoiceData.dueDate}
@@ -422,12 +425,12 @@
 	<svelte:fragment slot="work-date-for">
 		<div class="flex flex-col items-center gap-4 sm:flex-row">
 			<p class="text-sm text-gray-500 dark:text-gray-300">
-				{$t('work-for-date')}
+				{$LL.common.workForDate()}
 			</p>
 
 			<div>
 				<label for="work-from-date" class="sr-only">
-					{$t('date-from')}
+					{$LL.common.dateFrom()}
 				</label>
 				<input
 					bind:value={$invoiceData.workDateInterval.fromDate}
@@ -442,7 +445,7 @@
 
 			<div>
 				<label for="work-to-date" class="sr-only">
-					{$t('date-to')}
+					{$LL.common.dateTo()}
 				</label>
 				<input
 					bind:value={$invoiceData.workDateInterval.toDate}
@@ -467,7 +470,7 @@
 							-
 						</button>
 						<label for="item-description" class="sr-only">
-							{$t('form.service-item.description')}
+							{$LL.invoiceForm.serviceItem.description()}
 						</label>
 						<input
 							bind:value={item.description}
@@ -475,14 +478,14 @@
 							name="item-description"
 							id="item-description"
 							class="min-w-[170px] rounded-md text-sm sm:min-w-[220px] md:min-w-[280px]"
-							placeholder={$t('form.service-item.description')}
+							placeholder={$LL.invoiceForm.serviceItem.description()}
 						/>
 					</div>
 					<!-- small screen only -->
 					<div class="mt-4 flex gap-4 sm:hidden">
 						<div class="flex flex-col items-end">
 							<label for="item-quantity" class="sr-only">
-								{$t('form.service-item.quantity')}
+								{$LL.invoiceForm.serviceItem.quantity()}
 							</label>
 							<input
 								bind:value={item.quantity}
@@ -490,7 +493,7 @@
 								name="item-quantity"
 								id="item-quantity"
 								class="max-w-[100px] rounded-md text-right"
-								placeholder={$t('form.service-item.quantity')}
+								placeholder={$LL.invoiceForm.serviceItem.quantity()}
 								min="0"
 							/>
 						</div>
@@ -498,11 +501,11 @@
 							bind:value={item.unitPrice}
 							name="item-unit-price"
 							id="item-unit-price"
-							placeholder={$t('form.service-item.unit-price')}
+							placeholder={$LL.invoiceForm.serviceItem.unitPrice()}
 							classes="flex flex-col items-end"
 						>
 							<svelte:fragment slot="label">
-								{$t('form.service-item.unit-price')}
+								{$LL.invoiceForm.serviceItem.unitPrice()}
 							</svelte:fragment>
 						</CurrencyValueInput>
 					</div>
@@ -519,7 +522,7 @@
 				<td class="hidden py-4 px-3 text-right text-sm sm:table-cell">
 					<div class="flex flex-col items-end">
 						<label for="item-quantity" class="sr-only">
-							{$t('form.service-item.quantity')}
+							{$LL.invoiceForm.serviceItem.quantity()}
 						</label>
 						<input
 							bind:value={item.quantity}
@@ -527,7 +530,7 @@
 							name="item-quantity"
 							id="item-quantity"
 							class="max-w-[100px] rounded-md text-right"
-							placeholder={$t('form.service-item.quantity')}
+							placeholder={$LL.invoiceForm.serviceItem.quantity()}
 							min="0"
 						/>
 					</div>
@@ -537,11 +540,11 @@
 						bind:value={item.unitPrice}
 						name="item-unit-price"
 						id="item-unit-price"
-						placeholder={$t('form.service-item.unit-price')}
+						placeholder={$LL.invoiceForm.serviceItem.unitPrice()}
 						classes="flex flex-col items-end"
 					>
 						<svelte:fragment slot="label">
-							{$t('form.service-item.unit-price')}
+							{$LL.invoiceForm.serviceItem.unitPrice()}
 						</svelte:fragment>
 					</CurrencyValueInput>
 				</td>
@@ -565,11 +568,11 @@
 				bind:value={$invoiceData.adjustments}
 				name="item-adjustments"
 				id="item-adjustments"
-				placeholder={$t('form.service-item.adjustments')}
+				placeholder={$LL.invoiceForm.serviceItem.adjustments()}
 				classes="flex flex-col items-end"
 			>
 				<svelte:fragment slot="label">
-					{$t('form.service-item.adjustments')}
+					{$LL.invoiceForm.serviceItem.adjustments()}
 				</svelte:fragment>
 			</CurrencyValueInput>
 		</div>
@@ -582,7 +585,7 @@
 	<svelte:fragment slot="note">
 		<div>
 			<label for="item-note" class="sr-only">
-				{$t('form.service-item.note')}
+				{$LL.invoiceForm.serviceItem.note()}
 			</label>
 			<div class="mt-2">
 				<textarea
@@ -591,7 +594,7 @@
 					name="item-note"
 					id="item-note"
 					class="rounded-md text-sm"
-					placeholder={$t('form.service-item.note')}
+					placeholder={$LL.invoiceForm.serviceItem.note()}
 				/>
 			</div>
 		</div>
@@ -599,7 +602,7 @@
 
 	<section class="mt-8 flex flex-row-reverse justify-center gap-4 text-center">
 		<LinkPrimary href="/preview">
-			{$t('preview')}
+			{$LL.common.preview()}
 			<Icon
 				icon="mdi:chevron-double-right"
 				width="20"
@@ -616,13 +619,13 @@
 				aria-hidden="true"
 				class="mr-1"
 			/>
-			{$t('clear')}
+			{$LL.common.clear()}
 		</ButtonSecondary>
 	</section>
 </InvoiceSkeleton>
 
 <ModalConfirm bind:this={confirmModal} on:confirm-clear={clearFormData}>
 	<svelte:fragment slot="button-confirm">
-		{$t('clear')}
+		{$LL.common.clear()}
 	</svelte:fragment>
 </ModalConfirm>

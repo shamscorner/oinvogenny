@@ -1,8 +1,10 @@
+import { baseLocale } from '$lib/i18n/i18n-util';
+
 export {};
 
 (function handle() {
 	document.documentElement.setAttribute(
 		'lang',
-		localStorage.getItem('lang') || 'en'
+		localStorage.getItem('lang') || baseLocale
 	);
 })();
