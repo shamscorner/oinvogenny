@@ -22,9 +22,15 @@
 
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
-	<meta property="og:url" content="https://oinvogenny.shamscorner.com/" />
+	<meta
+		property="og:url"
+		content="https://oinvogenny.shamscorner.com/generate"
+	/>
 
-	<meta property="twitter:url" content="https://oinvogenny.shamscorner.com/" />
+	<meta
+		property="twitter:url"
+		content="https://oinvogenny.shamscorner.com/generate"
+	/>
 	<meta property="twitter:title" content={title} />
 	<meta property="twitter:description" content={description} />
 
@@ -38,7 +44,7 @@
 		data-n-head="1"
 		data-hid="og:url"
 		property="og:url"
-		content="https://oinvogenny.shamscorner.com/"
+		content="https://oinvogenny.shamscorner.com/generate"
 	/>
 	<meta
 		data-n-head="1"
@@ -57,7 +63,7 @@
 		data-n-head="1"
 		data-hid="twitter:url"
 		name="twitter:url"
-		content="https://oinvogenny.shamscorner.com/"
+		content="https://oinvogenny.shamscorner.com/generate"
 	/>
 	<meta
 		data-n-head="1"
@@ -85,6 +91,6 @@
 		data-n-head="1"
 		data-hid="canonical"
 		rel="canonical"
-		href="https://oinvogenny.shamscorner.com/"
+		href="https://oinvogenny.shamscorner.com/generate"
 	/>
 </svelte:head>
