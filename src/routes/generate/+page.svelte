@@ -464,6 +464,27 @@
 		</div>
 	</svelte:fragment>
 
+	<svelte:fragment slot="currency-symbol">
+		<div class="flex items-center gap-2">
+			<span class="text-base font-semibold text-gray-600 dark:text-gray-300">
+				{$LL.common.currency()}
+			</span>
+			<div class="w-[45px]">
+				<label for="currency-symbol" class="sr-only">
+					{$LL.common.srOnly.currencySymbol()}
+				</label>
+				<input
+					bind:value={$invoiceData.currencySymbol}
+					type="text"
+					name="currency-symbol"
+					id="currency-symbol"
+					class="rounded-md"
+					placeholder={$LL.invoiceForm.serviceItem.description()}
+				/>
+			</div>
+		</div>
+	</svelte:fragment>
+
 	<svelte:fragment slot="table-row">
 		{#each $invoiceData.items as item, itemIdx (itemIdx)}
 			<tr class="border-b border-gray-200 dark:border-gray-600">
@@ -508,6 +529,7 @@
 							name="item-unit-price"
 							id="item-unit-price"
 							placeholder={$LL.invoiceForm.serviceItem.unitPrice()}
+							currencySymbol={$invoiceData.currencySymbol}
 							classes="flex flex-col items-end"
 						>
 							<svelte:fragment slot="label">
@@ -547,6 +569,7 @@
 						name="item-unit-price"
 						id="item-unit-price"
 						placeholder={$LL.invoiceForm.serviceItem.unitPrice()}
+						currencySymbol={$invoiceData.currencySymbol}
 						classes="flex flex-col items-end"
 					>
 						<svelte:fragment slot="label">
@@ -557,14 +580,16 @@
 				<td
 					class="py-4 pl-3 pr-4 text-right align-bottom text-sm sm:pr-6 sm:align-middle md:pr-0"
 				>
-					${(+item.quantity * +item.unitPrice).toFixed(2)}
+					{$invoiceData.currencySymbol}
+					{(+item.quantity * +item.unitPrice).toFixed(2)}
 				</td>
 			</tr>
 		{/each}
 	</svelte:fragment>
 
 	<svelte:fragment slot="subtotal">
-		${$invoiceItemsSubTotal.toFixed(2)}
+		{$invoiceData.currencySymbol}
+		{$invoiceItemsSubTotal.toFixed(2)}
 	</svelte:fragment>
 
 	<svelte:fragment slot="adjustments">
@@ -575,6 +600,7 @@
 				name="item-adjustments"
 				id="item-adjustments"
 				placeholder={$LL.invoiceForm.serviceItem.adjustments()}
+				currencySymbol={$invoiceData.currencySymbol}
 				classes="flex flex-col items-end"
 			>
 				<svelte:fragment slot="label">
@@ -585,7 +611,8 @@
 	</svelte:fragment>
 
 	<svelte:fragment slot="total">
-		${$invoiceItemsTotal.toFixed(2)}
+		{$invoiceData.currencySymbol}
+		{$invoiceItemsTotal.toFixed(2)}
 	</svelte:fragment>
 
 	<svelte:fragment slot="note">

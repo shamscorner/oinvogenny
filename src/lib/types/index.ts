@@ -20,6 +20,7 @@ export type InvoiceDataType = {
 		country: string;
 	};
 	invoiceNumber: string;
+	currencySymbol: string;
 	dueDate: string;
 	workDateInterval: {
 		fromDate: string;

@@ -74,7 +74,11 @@
 			<hr class="my-5 dark:border-gray-600" />
 
 			<section>
-				<slot name="work-date-for" />
+				<div class="flex flex-wrap justify-between gap-6">
+					<slot name="work-date-for" />
+
+					<slot name="currency-symbol" />
+				</div>
 
 				<div class="-mx-4 mt-4 flex flex-col sm:-mx-6 md:mx-0">
 					<table

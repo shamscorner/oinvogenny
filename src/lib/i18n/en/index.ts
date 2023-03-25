@@ -23,7 +23,12 @@ const en: BaseTranslation = {
 		clear: 'Clear',
 		ok: 'Ok',
 		close: 'Close',
-		areYouSure: 'Are you sure?'
+		areYouSure: 'Are you sure?',
+		currency: 'Currency',
+
+		srOnly: {
+			currencySymbol: 'Currency symbol'
+		}
 	},
 
 	pageSpecifics: {
@@ -54,7 +59,7 @@ const en: BaseTranslation = {
 		head: {
 			description: 'Description',
 			qty: 'Qty ({quantity:string})',
-			unitPrice: 'Unit Price (/{unit:string})',
+			unitPrice: 'Rate (/{unit:string})',
 			totalPrice: 'Total Price'
 		},
 		body: {

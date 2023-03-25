@@ -23,6 +23,7 @@ const initialData: InvoiceDataType = {
 		country: ''
 	},
 	invoiceNumber: '',
+	currencySymbol: '$',
 	dueDate: '',
 	workDateInterval: {
 		fromDate: '',

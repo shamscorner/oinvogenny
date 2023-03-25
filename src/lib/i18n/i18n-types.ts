@@ -103,6 +103,16 @@ type RootTranslation = {
 		 * A​r​e​ ​y​o​u​ ​s​u​r​e​?
 		 */
 		areYouSure: string
+		/**
+		 * C​u​r​r​e​n​c​y
+		 */
+		currency: string
+		srOnly: {
+			/**
+			 * C​u​r​r​e​n​c​y​ ​s​y​m​b​o​l
+			 */
+			currencySymbol: string
+		}
 	}
 	pageSpecifics: {
 		/**
@@ -154,7 +164,7 @@ type RootTranslation = {
 			 */
 			qty: RequiredParams<'quantity'>
 			/**
-			 * U​n​i​t​ ​P​r​i​c​e​ ​(​/​{​u​n​i​t​}​)
+			 * R​a​t​e​ ​(​/​{​u​n​i​t​}​)
 			 * @param {string} unit
 			 */
 			unitPrice: RequiredParams<'unit'>
@@ -398,6 +408,16 @@ export type TranslationFunctions = {
 		 * Are you sure?
 		 */
 		areYouSure: () => LocalizedString
+		/**
+		 * Currency
+		 */
+		currency: () => LocalizedString
+		srOnly: {
+			/**
+			 * Currency symbol
+			 */
+			currencySymbol: () => LocalizedString
+		}
 	}
 	pageSpecifics: {
 		/**
@@ -448,7 +468,7 @@ export type TranslationFunctions = {
 			 */
 			qty: (arg: { quantity: string }) => LocalizedString
 			/**
-			 * Unit Price (/{unit})
+			 * Rate (/{unit})
 			 */
 			unitPrice: (arg: { unit: string }) => LocalizedString
 			/**

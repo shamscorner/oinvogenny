@@ -23,7 +23,12 @@ const bn: Translation = {
 		clear: 'মুছুন',
 		ok: 'ওকে',
 		close: 'বন্ধ করুন',
-		areYouSure: 'আপনি কি নিশ্চিত?'
+		areYouSure: 'আপনি কি নিশ্চিত?',
+		currency: 'মুদ্রা',
+
+		srOnly: {
+			currencySymbol: 'মুদ্রার প্রতীক'
+		}
 	},
 
 	pageSpecifics: {
@@ -53,7 +58,7 @@ const bn: Translation = {
 		head: {
 			description: 'বিবরণ',
 			qty: '{quantity}টি পরিমাণ',
-			unitPrice: 'ইউনিট মূল্য (/{unit})',
+			unitPrice: 'হার (/{unit})',
 			totalPrice: 'মোট মূল্য'
 		},
 		body: {

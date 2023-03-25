@@ -121,25 +121,29 @@
 				<td
 					class="hidden py-4 px-3 text-right text-xs print:table-cell sm:table-cell"
 				>
-					${(+item.unitPrice).toFixed(2)}
+					{`${$invoiceData.currencySymbol}${(+item.unitPrice).toFixed(2)}`}
 				</td>
 				<td class="py-4 pl-3 pr-4 text-right text-xs sm:pr-6 md:pr-0">
-					${(+item.quantity * +item.unitPrice).toFixed(2)}
+					{`${$invoiceData.currencySymbol}${(
+						+item.quantity * +item.unitPrice
+					).toFixed(2)}`}
 				</td>
 			</tr>
 		{/each}
 	</svelte:fragment>
 
 	<svelte:fragment slot="subtotal">
-		${$invoiceItemsSubTotal.toFixed(2)}
+		{`${$invoiceData.currencySymbol}${$invoiceItemsSubTotal.toFixed(2)}`}
 	</svelte:fragment>
 
 	<svelte:fragment slot="adjustments">
-		- ${(+$invoiceData.adjustments).toFixed(2)}
+		- {`${$invoiceData.currencySymbol}${(+$invoiceData.adjustments).toFixed(
+			2
+		)}`}
 	</svelte:fragment>
 
 	<svelte:fragment slot="total">
-		${$invoiceItemsTotal.toFixed(2)}
+		{`${$invoiceData.currencySymbol}${$invoiceItemsTotal.toFixed(2)}`}
 	</svelte:fragment>
 
 	<svelte:fragment slot="note">
