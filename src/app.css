@@ -19,6 +19,6 @@
 	input[type='number'],
 	input[type='date'],
 	textarea {
-		@apply relative block w-full border-gray-300 bg-transparent placeholder-slate-400 focus:z-10 focus:border-pink-500 focus:ring-pink-500 dark:border-gray-600 dark:placeholder-slate-500 sm:text-sm;
+		@apply relative block w-full border-gray-300 bg-transparent placeholder-slate-400 focus:border-pink-500 focus:ring-pink-500 dark:border-gray-600 dark:placeholder-slate-500 sm:text-sm;
 	}
 }
