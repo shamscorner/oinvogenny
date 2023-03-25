@@ -22,7 +22,7 @@
 			type="number"
 			{name}
 			{id}
-			class="max-w-[100px] rounded-md pl-7 text-right"
+			class="max-w-[6.25em] rounded-md pl-7 text-right"
 			{placeholder}
 			min="0"
 			aria-describedby="price-currency"
