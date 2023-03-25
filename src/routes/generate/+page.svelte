@@ -259,7 +259,7 @@
 				type="date"
 				name="submitted-on"
 				id="submitted-on"
-				class="max-w-[180px] rounded-md"
+				class="max-w-[11.25em] rounded-md"
 			/>
 		</div>
 	</svelte:fragment>
@@ -443,7 +443,7 @@
 					type="date"
 					name="work-from-date"
 					id="work-from-date"
-					class="w-[180px] rounded-md"
+					class="w-[11.25em] rounded-md"
 				/>
 			</div>
 
@@ -458,7 +458,7 @@
 					type="date"
 					name="work-to-date"
 					id="work-to-date"
-					class="w-[180px] rounded-md"
+					class="w-[11.25em] rounded-md"
 				/>
 			</div>
 		</div>
@@ -469,7 +469,7 @@
 			<span class="text-base font-semibold text-gray-600 dark:text-gray-300">
 				{$LL.common.currency()}
 			</span>
-			<div class="w-[45px]">
+			<div class="w-[2.813em]">
 				<label for="currency-symbol" class="sr-only">
 					{$LL.common.srOnly.currencySymbol()}
 				</label>
@@ -504,7 +504,7 @@
 							type="text"
 							name="item-description"
 							id="item-description"
-							class="min-w-[170px] rounded-md text-sm sm:min-w-[220px] md:min-w-[280px]"
+							class="min-w-[10.625em] rounded-md text-sm sm:min-w-[13.75em] md:min-w-[17.5em]"
 							placeholder={$LL.invoiceForm.serviceItem.description()}
 						/>
 					</div>
@@ -519,7 +519,7 @@
 								type="number"
 								name="item-quantity"
 								id="item-quantity"
-								class="max-w-[100px] rounded-md text-right"
+								class="max-w-[6.25em] rounded-md text-right"
 								placeholder={$LL.invoiceForm.serviceItem.quantity()}
 								min="0"
 							/>
@@ -557,7 +557,7 @@
 							type="number"
 							name="item-quantity"
 							id="item-quantity"
-							class="max-w-[100px] rounded-md text-right"
+							class="max-w-[6.25em] rounded-md text-right"
 							placeholder={$LL.invoiceForm.serviceItem.quantity()}
 							min="0"
 						/>

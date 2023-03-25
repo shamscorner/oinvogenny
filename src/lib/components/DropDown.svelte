@@ -33,7 +33,7 @@
       To: "transform opacity-0 scale-95"
   -->
 	<div
-		class="absolute right-0 z-10 hidden min-w-[80px] origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus-visible:outline-none group-hover:block dark:border dark:border-gray-600 dark:bg-gray-800"
+		class="absolute right-0 z-10 hidden min-w-[5em] origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus-visible:outline-none group-hover:block dark:border dark:border-gray-600 dark:bg-gray-800"
 		role="menu"
 		aria-orientation="vertical"
 		aria-labelledby="menu-button"
