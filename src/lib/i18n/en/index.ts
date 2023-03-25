@@ -27,6 +27,13 @@ const en: BaseTranslation = {
 	},
 
 	pageSpecifics: {
+		title:
+			'Simple One-click Invoice Generator for Freelancers and Remote Workers',
+		description:
+			"This is a very simple, clean, awesome-looking, open-source, one-click invoice generator application for freelancers & remote job holders to manage payments. All the data are saved on the client's browser. Nothing is saved anywhere so it is secure & safe.",
+		keywords:
+			'Simple invoice generator,clean invoice management,open-source invoicing tool,one-click invoicing,freelancer payment management,remote job payment management,secure invoice generation,safe payment management,browser-based invoicing,client-side invoice data storage.',
+
 		generator: {
 			title: 'Generate Invoice',
 			meta: {
@@ -38,7 +45,7 @@ const en: BaseTranslation = {
 			title: 'Preview Invoice',
 			meta: {
 				description:
-					'Preview the invoice that you configured on the generate page'
+					"Preview your customized invoice with ease and ensure it's perfect before sending to clients."
 			}
 		}
 	},

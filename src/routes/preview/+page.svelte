@@ -11,7 +11,8 @@
 		invoiceItemsSubTotal,
 		invoiceItemsTotal,
 		companyAvatar
-	} from '$lib/store';
+	} from '$lib/stores';
+	import { setSeo } from '$lib/stores/SeoStore';
 
 	function printInvoice() {
 		window.print();
@@ -19,6 +20,10 @@
 
 	onMount(() => {
 		scrollToTop();
+		setSeo({
+			title: $LL.pageSpecifics.preview.title(),
+			description: $LL.pageSpecifics.preview.meta.description()
+		});
 	});
 </script>
 

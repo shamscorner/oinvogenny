@@ -15,10 +15,11 @@
 		invoiceItemsSubTotal,
 		companyAvatar,
 		resetInvoiceData
-	} from '$lib/store';
+	} from '$lib/stores';
 	import UploadIcon from '$lib/assets/upload-icon.svg';
 	import ModalConfirm from '$lib/components/ModalConfirm.svelte';
 	import ButtonSecondary from '$lib/components/buttons/ButtonSecondary.svelte';
+	import { setSeo } from '$lib/stores/SeoStore';
 
 	let idxDB: IDBPDatabase<IndexedDBSchemaType> | undefined;
 	let companyLogoInput: HTMLInputElement;
@@ -27,6 +28,11 @@
 	onMount(async () => {
 		scrollToTop();
 		idxDB = await initIndexDB();
+
+		setSeo({
+			title: $LL.pageSpecifics.generator.title(),
+			description: $LL.pageSpecifics.generator.meta.description()
+		});
 	});
 
 	$: {
@@ -512,7 +518,7 @@
 
 					{#if itemIdx === $invoiceData.items.length - 1}
 						<button
-							class="absolute -bottom-10 flex h-7 w-7 items-center justify-center rounded-full bg-pink-500 font-semibold text-white transition-colors hover:bg-pink-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800 "
+							class="absolute -bottom-10 flex h-7 w-7 items-center justify-center rounded-full bg-pink-500 font-semibold text-white transition-colors hover:bg-pink-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800"
 							on:click={() => addNewItem()}
 						>
 							+

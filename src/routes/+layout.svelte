@@ -9,7 +9,7 @@
 	import { locales } from '$lib/i18n/i18n-util';
 	import type { Locales } from '$lib/i18n/i18n-types';
 	import { page } from '$app/stores';
-	import { invoiceData, companyAvatar } from '$lib/store';
+	import { invoiceData, companyAvatar } from '$lib/stores';
 	import { InvoiceDataIdxDBKey, CompanyAvatarIdxDBKey } from '$lib/constants';
 	import { initIndexDB, type IndexedDBSchemaType } from '$lib/indexDB';
 	import { arrayBufferToFile } from '$lib/helpers';
@@ -17,6 +17,8 @@
 	import AppBackground from '$lib/components/AppBackground.svelte';
 	import type { LayoutData } from './$types';
 	import { loadLocaleAsync } from '$lib/i18n/i18n-util.async';
+	import Seo from './SEO.svelte';
+	import { seo } from '$lib/stores/SeoStore';
 
 	export let data: LayoutData;
 	// at the very top, set the locale before you access the store and before the actual rendering takes place
@@ -68,6 +70,8 @@
 		};
 	}
 </script>
+
+<Seo title={$seo.title} description={$seo.description} />
 
 <div
 	id="overflowed-container"
@@ -126,7 +130,7 @@
 	</header>
 	<slot />
 
-	<footer class="mx-auto mt-8 max-w-3xl py-12  px-4 print:hidden md:px-0">
+	<footer class="mx-auto mt-8 max-w-3xl py-12 px-4 print:hidden md:px-0">
 		<div class="md:flex md:items-center md:justify-between">
 			<div class="flex justify-center space-x-6 md:order-2">
 				<a

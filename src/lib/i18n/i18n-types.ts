@@ -105,6 +105,18 @@ type RootTranslation = {
 		areYouSure: string
 	}
 	pageSpecifics: {
+		/**
+		 * S​i​m​p​l​e​ ​O​n​e​-​c​l​i​c​k​ ​I​n​v​o​i​c​e​ ​G​e​n​e​r​a​t​o​r​ ​f​o​r​ ​F​r​e​e​l​a​n​c​e​r​s​ ​a​n​d​ ​R​e​m​o​t​e​ ​W​o​r​k​e​r​s
+		 */
+		title: string
+		/**
+		 * T​h​i​s​ ​i​s​ ​a​ ​v​e​r​y​ ​s​i​m​p​l​e​,​ ​c​l​e​a​n​,​ ​a​w​e​s​o​m​e​-​l​o​o​k​i​n​g​,​ ​o​p​e​n​-​s​o​u​r​c​e​,​ ​o​n​e​-​c​l​i​c​k​ ​i​n​v​o​i​c​e​ ​g​e​n​e​r​a​t​o​r​ ​a​p​p​l​i​c​a​t​i​o​n​ ​f​o​r​ ​f​r​e​e​l​a​n​c​e​r​s​ ​&​ ​r​e​m​o​t​e​ ​j​o​b​ ​h​o​l​d​e​r​s​ ​t​o​ ​m​a​n​a​g​e​ ​p​a​y​m​e​n​t​s​.​ ​A​l​l​ ​t​h​e​ ​d​a​t​a​ ​a​r​e​ ​s​a​v​e​d​ ​o​n​ ​t​h​e​ ​c​l​i​e​n​t​'​s​ ​b​r​o​w​s​e​r​.​ ​N​o​t​h​i​n​g​ ​i​s​ ​s​a​v​e​d​ ​a​n​y​w​h​e​r​e​ ​s​o​ ​i​t​ ​i​s​ ​s​e​c​u​r​e​ ​&​ ​s​a​f​e​.
+		 */
+		description: string
+		/**
+		 * S​i​m​p​l​e​ ​i​n​v​o​i​c​e​ ​g​e​n​e​r​a​t​o​r​,​c​l​e​a​n​ ​i​n​v​o​i​c​e​ ​m​a​n​a​g​e​m​e​n​t​,​o​p​e​n​-​s​o​u​r​c​e​ ​i​n​v​o​i​c​i​n​g​ ​t​o​o​l​,​o​n​e​-​c​l​i​c​k​ ​i​n​v​o​i​c​i​n​g​,​f​r​e​e​l​a​n​c​e​r​ ​p​a​y​m​e​n​t​ ​m​a​n​a​g​e​m​e​n​t​,​r​e​m​o​t​e​ ​j​o​b​ ​p​a​y​m​e​n​t​ ​m​a​n​a​g​e​m​e​n​t​,​s​e​c​u​r​e​ ​i​n​v​o​i​c​e​ ​g​e​n​e​r​a​t​i​o​n​,​s​a​f​e​ ​p​a​y​m​e​n​t​ ​m​a​n​a​g​e​m​e​n​t​,​b​r​o​w​s​e​r​-​b​a​s​e​d​ ​i​n​v​o​i​c​i​n​g​,​c​l​i​e​n​t​-​s​i​d​e​ ​i​n​v​o​i​c​e​ ​d​a​t​a​ ​s​t​o​r​a​g​e​.
+		 */
+		keywords: string
 		generator: {
 			/**
 			 * G​e​n​e​r​a​t​e​ ​I​n​v​o​i​c​e
@@ -124,7 +136,7 @@ type RootTranslation = {
 			title: string
 			meta: {
 				/**
-				 * P​r​e​v​i​e​w​ ​t​h​e​ ​i​n​v​o​i​c​e​ ​t​h​a​t​ ​y​o​u​ ​c​o​n​f​i​g​u​r​e​d​ ​o​n​ ​t​h​e​ ​g​e​n​e​r​a​t​e​ ​p​a​g​e
+				 * P​r​e​v​i​e​w​ ​y​o​u​r​ ​c​u​s​t​o​m​i​z​e​d​ ​i​n​v​o​i​c​e​ ​w​i​t​h​ ​e​a​s​e​ ​a​n​d​ ​e​n​s​u​r​e​ ​i​t​'​s​ ​p​e​r​f​e​c​t​ ​b​e​f​o​r​e​ ​s​e​n​d​i​n​g​ ​t​o​ ​c​l​i​e​n​t​s​.
 				 */
 				description: string
 			}
@@ -388,6 +400,18 @@ export type TranslationFunctions = {
 		areYouSure: () => LocalizedString
 	}
 	pageSpecifics: {
+		/**
+		 * Simple One-click Invoice Generator for Freelancers and Remote Workers
+		 */
+		title: () => LocalizedString
+		/**
+		 * This is a very simple, clean, awesome-looking, open-source, one-click invoice generator application for freelancers & remote job holders to manage payments. All the data are saved on the client's browser. Nothing is saved anywhere so it is secure & safe.
+		 */
+		description: () => LocalizedString
+		/**
+		 * Simple invoice generator,clean invoice management,open-source invoicing tool,one-click invoicing,freelancer payment management,remote job payment management,secure invoice generation,safe payment management,browser-based invoicing,client-side invoice data storage.
+		 */
+		keywords: () => LocalizedString
 		generator: {
 			/**
 			 * Generate Invoice
@@ -407,7 +431,7 @@ export type TranslationFunctions = {
 			title: () => LocalizedString
 			meta: {
 				/**
-				 * Preview the invoice that you configured on the generate page
+				 * Preview your customized invoice with ease and ensure it's perfect before sending to clients.
 				 */
 				description: () => LocalizedString
 			}
