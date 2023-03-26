@@ -23,6 +23,7 @@ const bn: Translation = {
 		clear: 'মুছুন',
 		ok: 'ওকে',
 		close: 'বন্ধ করুন',
+		reload: 'পুনরায় লোড করুন',
 		areYouSure: 'আপনি কি নিশ্চিত?',
 		currency: 'মুদ্রা',
 
@@ -51,6 +52,12 @@ const bn: Translation = {
 			meta: {
 				description: 'সেট করা চালান প্রিভিউ করুন যা আপনি তৈরি করেছেন'
 			}
+		},
+
+		pwa: {
+			newContentAvailable:
+				'নতুন কন্টেন্ট উপলব্ধ, আপডেট করতে রিলোড বাটনে ক্লিক করুন।',
+			workOffline: 'অফলাইনে কাজ করার জন্য অ্যাপ প্রস্তুত'
 		}
 	},
 

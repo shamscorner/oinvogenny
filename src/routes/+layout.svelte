@@ -19,11 +19,13 @@
 	import { loadLocaleAsync } from '$lib/i18n/i18n-util.async';
 	import Seo from './SEO.svelte';
 	import { seo } from '$lib/stores/SeoStore';
+	import { pwaInfo } from 'virtual:pwa-info';
 
 	export let data: LayoutData;
 	// at the very top, set the locale before you access the store and before the actual rendering takes place
 	setLocale(data.locale);
 
+	let ReloadPrompt: any;
 	let idxDB: IDBPDatabase<IndexedDBSchemaType> | undefined;
 	let isPageLoader = true;
 
@@ -36,6 +38,9 @@
 
 		loadExistingInvoiceData();
 		loadExistingCompanyAvatar();
+
+		pwaInfo &&
+			(ReloadPrompt = (await import('$lib/ReloadPrompt.svelte')).default);
 	});
 
 	async function setLocaleLang(l: Locales) {
@@ -207,6 +212,10 @@
 	<div id="teleport" />
 	<slot name="teleport" />
 </div>
+
+{#if ReloadPrompt}
+	<svelte:component this={ReloadPrompt} />
+{/if}
 
 {#if isPageLoader}
 	<PageLoader />

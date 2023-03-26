@@ -2,6 +2,7 @@
 	import { setSeo } from '$lib/stores/SeoStore';
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import { onMount } from 'svelte';
+	import { pwaInfo } from 'virtual:pwa-info';
 
 	export let title: string = $LL.pageSpecifics.title();
 	export let description: string = $LL.pageSpecifics.description();
@@ -12,6 +13,8 @@
 			description: description || $LL.pageSpecifics.description()
 		});
 	});
+
+	$: webManifest = pwaInfo ? pwaInfo.webManifest.linkTag : '';
 </script>
 
 <svelte:head>
@@ -93,4 +96,6 @@
 		rel="canonical"
 		href="https://oinvogenny.shamscorner.com/generate"
 	/>
+
+	{@html webManifest}
 </svelte:head>

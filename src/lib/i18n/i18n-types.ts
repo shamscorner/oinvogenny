@@ -100,6 +100,10 @@ type RootTranslation = {
 		 */
 		close: string
 		/**
+		 * R​e​l​o​a​d
+		 */
+		reload: string
+		/**
 		 * A​r​e​ ​y​o​u​ ​s​u​r​e​?
 		 */
 		areYouSure: string
@@ -150,6 +154,16 @@ type RootTranslation = {
 				 */
 				description: string
 			}
+		}
+		pwa: {
+			/**
+			 * N​e​w​ ​c​o​n​t​e​n​t​ ​a​v​a​i​l​a​b​l​e​,​ ​c​l​i​c​k​ ​o​n​ ​r​e​l​o​a​d​ ​b​u​t​t​o​n​ ​t​o​ ​u​p​d​a​t​e​.
+			 */
+			newContentAvailable: string
+			/**
+			 * A​p​p​ ​r​e​a​d​y​ ​t​o​ ​w​o​r​k​ ​o​f​f​l​i​n​e
+			 */
+			workOffline: string
 		}
 	}
 	invoicesTable: {
@@ -405,6 +419,10 @@ export type TranslationFunctions = {
 		 */
 		close: () => LocalizedString
 		/**
+		 * Reload
+		 */
+		reload: () => LocalizedString
+		/**
 		 * Are you sure?
 		 */
 		areYouSure: () => LocalizedString
@@ -455,6 +473,16 @@ export type TranslationFunctions = {
 				 */
 				description: () => LocalizedString
 			}
+		}
+		pwa: {
+			/**
+			 * New content available, click on reload button to update.
+			 */
+			newContentAvailable: () => LocalizedString
+			/**
+			 * App ready to work offline
+			 */
+			workOffline: () => LocalizedString
 		}
 	}
 	invoicesTable: {
