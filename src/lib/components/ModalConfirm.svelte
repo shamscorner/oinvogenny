@@ -78,9 +78,9 @@
 							</svg>
 						</div>
 						<div class="mt-3 text-center sm:mt-1.5 sm:ml-4 sm:text-left">
-							<h3 class="text-lg font-medium leading-6" id="modal-title">
+							<h1 class="text-lg font-medium leading-6" id="modal-title">
 								{$LL.common.areYouSure()}
-							</h3>
+							</h1>
 						</div>
 					</div>
 					<div class="mt-5 gap-4 sm:mt-4 sm:flex sm:flex-row-reverse">

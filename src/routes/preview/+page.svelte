@@ -63,9 +63,9 @@
 	</svelte:fragment>
 
 	<svelte:fragment slot="submitted-on">
-		<h2 class="text-lg font-semibold text-pink-400">
+		<p class="text-lg font-semibold text-pink-400">
 			{$LL.common.submittedOn({ date: formatDate($invoiceData.submittedOn) })}
-		</h2>
+		</p>
 	</svelte:fragment>
 
 	<svelte:fragment slot="invoice-for">
@@ -121,10 +121,12 @@
 				<td
 					class="hidden py-4 px-3 text-right text-xs print:table-cell sm:table-cell"
 				>
-					{`${$invoiceData.currencySymbol}${(+item.unitPrice).toFixed(2)}`}
+					{`${$invoiceData.currencySymbol || '$'}${(+item.unitPrice).toFixed(
+						2
+					)}`}
 				</td>
 				<td class="py-4 pl-3 pr-4 text-right text-xs sm:pr-6 md:pr-0">
-					{`${$invoiceData.currencySymbol}${(
+					{`${$invoiceData.currencySymbol || '$'}${(
 						+item.quantity * +item.unitPrice
 					).toFixed(2)}`}
 				</td>
@@ -133,17 +135,17 @@
 	</svelte:fragment>
 
 	<svelte:fragment slot="subtotal">
-		{`${$invoiceData.currencySymbol}${$invoiceItemsSubTotal.toFixed(2)}`}
+		{`${$invoiceData.currencySymbol || '$'}${$invoiceItemsSubTotal.toFixed(2)}`}
 	</svelte:fragment>
 
 	<svelte:fragment slot="adjustments">
-		- {`${$invoiceData.currencySymbol}${(+$invoiceData.adjustments).toFixed(
-			2
-		)}`}
+		- {`${
+			$invoiceData.currencySymbol || '$'
+		}${(+$invoiceData.adjustments).toFixed(2)}`}
 	</svelte:fragment>
 
 	<svelte:fragment slot="total">
-		{`${$invoiceData.currencySymbol}${$invoiceItemsTotal.toFixed(2)}`}
+		{`${$invoiceData.currencySymbol || '$'}${$invoiceItemsTotal.toFixed(2)}`}
 	</svelte:fragment>
 
 	<svelte:fragment slot="note">

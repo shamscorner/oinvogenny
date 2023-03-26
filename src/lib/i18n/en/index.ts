@@ -23,6 +23,7 @@ const en: BaseTranslation = {
 		clear: 'Clear',
 		ok: 'Ok',
 		close: 'Close',
+		reload: 'Reload',
 		areYouSure: 'Are you sure?',
 		currency: 'Currency',
 
@@ -52,6 +53,12 @@ const en: BaseTranslation = {
 				description:
 					"Preview your customized invoice with ease and ensure it's perfect before sending to clients."
 			}
+		},
+
+		pwa: {
+			newContentAvailable:
+				'New content available, click on reload button to update.',
+			workOffline: 'App ready to work offline'
 		}
 	},
 

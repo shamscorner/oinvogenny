@@ -511,14 +511,14 @@
 					<!-- small screen only -->
 					<div class="mt-4 flex gap-4 sm:hidden">
 						<div class="flex flex-col items-end">
-							<label for="item-quantity" class="sr-only">
+							<label for="item-quantity-sm" class="sr-only">
 								{$LL.invoiceForm.serviceItem.quantity()}
 							</label>
 							<input
 								bind:value={item.quantity}
 								type="number"
 								name="item-quantity"
-								id="item-quantity"
+								id="item-quantity-sm"
 								class="max-w-[6.25em] rounded-md text-right"
 								placeholder={$LL.invoiceForm.serviceItem.quantity()}
 								min="0"
@@ -527,7 +527,7 @@
 						<CurrencyValueInput
 							bind:value={item.unitPrice}
 							name="item-unit-price"
-							id="item-unit-price"
+							id="item-unit-price-sm"
 							placeholder={$LL.invoiceForm.serviceItem.unitPrice()}
 							currencySymbol={$invoiceData.currencySymbol}
 							classes="flex flex-col items-end"

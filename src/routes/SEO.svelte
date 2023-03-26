@@ -2,6 +2,7 @@
 	import { setSeo } from '$lib/stores/SeoStore';
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import { onMount } from 'svelte';
+	import { pwaInfo } from 'virtual:pwa-info';
 
 	export let title: string = $LL.pageSpecifics.title();
 	export let description: string = $LL.pageSpecifics.description();
@@ -12,6 +13,8 @@
 			description: description || $LL.pageSpecifics.description()
 		});
 	});
+
+	$: webManifest = pwaInfo ? pwaInfo.webManifest.linkTag : '';
 </script>
 
 <svelte:head>
@@ -22,9 +25,15 @@
 
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
-	<meta property="og:url" content="https://oinvogenny.shamscorner.com/" />
+	<meta
+		property="og:url"
+		content="https://oinvogenny.shamscorner.com/generate"
+	/>
 
-	<meta property="twitter:url" content="https://oinvogenny.shamscorner.com/" />
+	<meta
+		property="twitter:url"
+		content="https://oinvogenny.shamscorner.com/generate"
+	/>
 	<meta property="twitter:title" content={title} />
 	<meta property="twitter:description" content={description} />
 
@@ -38,7 +47,7 @@
 		data-n-head="1"
 		data-hid="og:url"
 		property="og:url"
-		content="https://oinvogenny.shamscorner.com/"
+		content="https://oinvogenny.shamscorner.com/generate"
 	/>
 	<meta
 		data-n-head="1"
@@ -57,7 +66,7 @@
 		data-n-head="1"
 		data-hid="twitter:url"
 		name="twitter:url"
-		content="https://oinvogenny.shamscorner.com/"
+		content="https://oinvogenny.shamscorner.com/generate"
 	/>
 	<meta
 		data-n-head="1"
@@ -85,6 +94,8 @@
 		data-n-head="1"
 		data-hid="canonical"
 		rel="canonical"
-		href="https://oinvogenny.shamscorner.com/"
+		href="https://oinvogenny.shamscorner.com/generate"
 	/>
+
+	{@html webManifest}
 </svelte:head>
