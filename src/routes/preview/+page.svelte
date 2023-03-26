@@ -63,9 +63,9 @@
 	</svelte:fragment>
 
 	<svelte:fragment slot="submitted-on">
-		<h2 class="text-lg font-semibold text-pink-400">
+		<p class="text-lg font-semibold text-pink-400">
 			{$LL.common.submittedOn({ date: formatDate($invoiceData.submittedOn) })}
-		</h2>
+		</p>
 	</svelte:fragment>
 
 	<svelte:fragment slot="invoice-for">

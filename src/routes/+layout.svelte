@@ -87,7 +87,7 @@
 	<header
 		class="mx-auto mt-4 flex max-w-3xl items-center justify-between gap-5 px-4 print:hidden md:px-0"
 	>
-		<a href="/">
+		<a href="/" aria-label="Homepage logo">
 			<Icon
 				icon="mdi:home"
 				width="28"

@@ -33,38 +33,38 @@
 					class="mt-3 grid grid-cols-2 gap-4 text-xs print:grid-cols-3 sm:grid-cols-3"
 				>
 					<div class="space-y-1">
-						<h3
+						<h2
 							class="mb-1 text-base font-semibold text-gray-600 dark:text-gray-300"
 						>
 							{$LL.common.invoiceFor()}
-						</h3>
+						</h2>
 						<slot name="invoice-for" />
 					</div>
 
 					<div class="space-y-1">
-						<h3
+						<h2
 							class="mb-1 text-base font-semibold text-gray-600 dark:text-gray-300"
 						>
 							{$LL.common.invoiceFrom()}
-						</h3>
+						</h2>
 						<slot name="invoice-from" />
 					</div>
 
 					<div>
 						<div>
-							<h3
+							<h2
 								class="mb-1 text-base font-semibold text-gray-600 dark:text-gray-300"
 							>
 								{$LL.common.invoice()} #
-							</h3>
+							</h2>
 							<slot name="invoice-number" />
 						</div>
 						<div class="mt-4">
-							<h3
+							<h2
 								class="mb-1 text-base font-semibold text-gray-600 dark:text-gray-300"
 							>
 								{$LL.common.dueDate()}
-							</h3>
+							</h2>
 							<slot name="due-date" />
 						</div>
 					</div>
@@ -186,9 +186,9 @@
 
 		<footer class="mt-4">
 			{#if isNoteAvailable}
-				<h3 class="text-sm text-gray-500 dark:text-gray-300">
+				<h2 class="text-sm text-gray-500 dark:text-gray-300">
 					{$LL.common.note()}:
-				</h3>
+				</h2>
 				<slot name="note" />
 			{/if}
 		</footer>
