@@ -18,7 +18,8 @@ export default defineConfig({
 			base: '/',
 			manifest,
 			workbox: {
-				globPatterns: ['client/**/*.{js,css,ico,png,svg,webp,woff,woff2}']
+				globPatterns: ['client/**/*.{js,css,ico,png,svg,webp,woff,woff2}'],
+				swDest: '.svelte-kit/output/client/sw.js'
 			},
 			devOptions: {
 				enabled: true,
