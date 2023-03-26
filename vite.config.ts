@@ -17,9 +17,6 @@ export default defineConfig({
 			scope: '/',
 			base: '/',
 			manifest,
-			injectManifest: {
-				globPatterns: ['client/**/*.{js,css,ico,png,svg,webp,woff,woff2}']
-			},
 			workbox: {
 				globPatterns: ['client/**/*.{js,css,ico,png,svg,webp,woff,woff2}']
 			},

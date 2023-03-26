@@ -4,6 +4,7 @@ import { setLocale } from '$lib/i18n/i18n-svelte';
 import { detectLocale, baseLocale } from '$lib/i18n/i18n-util';
 import type { Locales } from '$lib/i18n/i18n-types';
 
+export const prerender = true;
 export const ssr = false;
 
 export const load = (async () => {
