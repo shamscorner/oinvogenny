@@ -22,6 +22,7 @@
 			console.error('SW registration error', error);
 		}
 	});
+
 	const close = () => {
 		offlineReady.set(false);
 		needRefresh.set(false);
@@ -32,21 +33,21 @@
 
 {#if toast}
 	<div
-		class="fixed right-2 bottom-2 z-20 mr-4 rounded border bg-white p-4 text-left shadow-lg"
+		class="fixed right-2 bottom-2 z-20 mr-4 rounded border bg-white p-4 text-left shadow-lg dark:border-gray-600 dark:bg-gray-700"
 		role="alert"
 	>
 		<div class="mb-4">
-			{#if $offlineReady}
-				<span>{$LL.pageSpecifics.pwa.workOffline()}</span>
-			{:else}
+			{#if !$offlineReady}
 				<span>{$LL.pageSpecifics.pwa.newContentAvailable()}</span>
 			{/if}
 		</div>
+
 		{#if $needRefresh}
 			<ButtonSecondary on:click={() => updateServiceWorker(true)}>
 				{$LL.common.reload()}
 			</ButtonSecondary>
 		{/if}
+
 		<ButtonSecondary on:click={close}>{$LL.common.close()}</ButtonSecondary>
 	</div>
 {/if}
