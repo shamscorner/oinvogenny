@@ -8,7 +8,7 @@ const en: BaseTranslation = {
 		uploadLogo: 'Upload Logo',
 		companyLogo: 'Company logo',
 		invoice: 'Invoice',
-		submittedOn: 'Submitted on {{date:string}}',
+		submittedOn: 'Submitted on {date:string}',
 		invoiceFor: 'Invoice for',
 		invoiceFrom: 'Invoice from',
 		dueDate: 'Due date',

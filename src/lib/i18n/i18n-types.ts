@@ -40,9 +40,10 @@ type RootTranslation = {
 		 */
 		invoice: string
 		/**
-		 * S​u​b​m​i​t​t​e​d​ ​o​n​ ​{​{​s​t​r​i​n​g​}​}
+		 * S​u​b​m​i​t​t​e​d​ ​o​n​ ​{​d​a​t​e​}
+		 * @param {string} date
 		 */
-		submittedOn: string
+		submittedOn: RequiredParams<'date'>
 		/**
 		 * I​n​v​o​i​c​e​ ​f​o​r
 		 */
@@ -359,9 +360,9 @@ export type TranslationFunctions = {
 		 */
 		invoice: () => LocalizedString
 		/**
-		 * Submitted on {{string}}
+		 * Submitted on {date}
 		 */
-		submittedOn: (arg: { date: number | string | boolean }) => LocalizedString
+		submittedOn: (arg: { date: string }) => LocalizedString
 		/**
 		 * Invoice for
 		 */
